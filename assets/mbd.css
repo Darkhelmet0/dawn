@@ -1,0 +1,20 @@
+.invisible_header {
+    position: absolute;
+    width: 100%;
+}
+
+/* .header__heading-logo {
+    width: 100%;
+} */
+.txt-wht {
+    color: var(--color-brand-primary-contrast);
+}
+
+.max-width-700 {
+    max-width: 700px;
+}
+
+.match-header-padding {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}

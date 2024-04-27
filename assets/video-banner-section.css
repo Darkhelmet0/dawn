@@ -1,0 +1,55 @@
+.video-banner {
+  position: relative;
+  width: 100%;
+  height: 30vw;
+  min-height: 390px;
+  overflow: hidden;
+}
+
+.video-banner h1 {
+  color: var(--color-brand-primary-contrast);
+  font-size: 45px;
+  font-style: italic;
+  font-weight: 600;
+  line-height: 95%;
+  letter-spacing: -1.35px;
+}
+
+.video-banner h1 span {
+  opacity: .6;
+}
+
+.video-banner__video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.50) 0%, rgba(0, 0, 0, 0.50) 100%);
+}
+
+.video-banner__video video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  z-index: -1;
+}
+
+.video-banner__content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0 20px;
+  color: var(--color-primary-contrasting);
+  text-align: left;
+}

@@ -3,168 +3,94 @@
     "video_banner_EyKGcT": {
       "type": "video-banner",
       "settings": {
-        "heading": "<span>TOP-TIER MEDICAL BRACES AND SUPPORTS</span> AT DIRECT-TO-YOU WHOLESALE PRICES",
+        "heading": "<span>TOP-TIER MEDICAL BRACES AND SUPPORTS<\/span> AT DIRECT-TO-YOU WHOLESALE PRICES",
         "subheading": "Supporting you, every step of the way.",
-        "video_url": "https://ogkmediaserver.nyc3.cdn.digitaloceanspaces.com/Video/OGK%202022%20Reel.mp4",
-        "placeholder_image": "shopify://shop_images/VideoBanner_2.jpg"
+        "video_url": "https:\/\/ogkmediaserver.nyc3.cdn.digitaloceanspaces.com\/MBD\/MBDLoopCC1.mp4",
+        "link_url": "",
+        "link_title": "Learn More"
       }
     },
-    "image_banner": {
-      "type": "image-banner",
+    "search-bar": {
+      "type": "search-bar",
       "blocks": {
-        "heading": {
-          "type": "heading",
+        "link_4FTg63": {
+          "type": "link",
           "settings": {
-            "heading": "Image banner",
-            "heading_size": "h0"
+            "link_title": "Knee Brace",
+            "link_url": "\/search?type=&q=Knee+Brace"
           }
         },
-        "text": {
-          "type": "text",
+        "link_Ap3zNU": {
+          "type": "link",
           "settings": {
-            "text": "Give customers details about the banner image(s) or content on the template.",
-            "text_style": "body"
+            "link_title": "Back Brace",
+            "link_url": "\/search?q=Back+Brace"
           }
         },
-        "button": {
-          "type": "buttons",
+        "link_gKdaUi": {
+          "type": "link",
           "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "link_title": "Elbow Brace",
+            "link_url": "\/search?type=&q=Elbow+Brace"
+          }
+        },
+        "link_kD4hwY": {
+          "type": "link",
+          "settings": {
+            "link_title": "Wrist Brace",
+            "link_url": "\/search?type=&q=Wrist+Brace"
+          }
+        },
+        "link_E96R8F": {
+          "type": "link",
+          "disabled": true,
+          "settings": {
+            "link_title": "Ankle Brace",
+            "link_url": "\/search?type=&q=Ancle+Brace"
           }
         }
       },
       "block_order": [
-        "heading",
-        "text",
-        "button"
+        "link_4FTg63",
+        "link_Ap3zNU",
+        "link_gKdaUi",
+        "link_kD4hwY",
+        "link_E96R8F"
       ],
       "settings": {
-        "image_overlay_opacity": 40,
-        "image_height": "large",
-        "desktop_content_position": "bottom-center",
-        "show_text_box": false,
-        "desktop_content_alignment": "center",
-        "color_scheme": "scheme-3",
-        "image_behavior": "none",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": false,
-        "show_text_below": false
+        "title": "Stop Overpaying For Braces And Supports.",
+        "search-button-text": "Search Catalog",
+        "description": "<p>Search for the products you need:<\/p>",
+        "subtitle": "Popular Searches",
+        "search_type": "product",
+        "placeholder_text": "Brace, Body Part, HCPCS Code..."
       }
     },
-    "rich_text": {
-      "type": "rich-text",
-      "blocks": {
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "Talk about your brand",
-            "heading_size": "h1"
-          }
-        },
-        "text": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "heading",
-        "text"
-      ],
+    "simple-text-section": {
+      "type": "simple-text-section",
       "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "scheme-1",
-        "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 0
+        "title": "A Wholesale Solution For Medical Practices Of Any Size",
+        "content": "<p>With Med Braces Direct, you don’t need to be a mega-size retailer to enjoy our high-volume prices. You just need to want what we offer: low price medical braces, complete with PDAC codes.<\/p>",
+        "background_color": "#f5bb00",
+        "text_color": "#00003c"
       }
     },
-    "featured_collection": {
-      "type": "featured-collection",
+    "product-showcase-stack": {
+      "type": "product-showcase-stack",
       "settings": {
-        "title": "Featured products",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "all",
-        "products_to_show": 8,
-        "columns_desktop": 4,
-        "full_width": false,
-        "show_view_all": false,
-        "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "color_scheme": "scheme-1",
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 28,
-        "padding_bottom": 36
-      }
-    },
-    "collage": {
-      "type": "collage",
-      "blocks": {
-        "collection-0": {
-          "type": "collection",
-          "settings": {
-            "collection": ""
-          }
-        },
-        "product": {
-          "type": "product",
-          "settings": {
-            "product": "",
-            "second_image": false
-          }
-        },
-        "collection-1": {
-          "type": "collection",
-          "settings": {
-            "collection": ""
-          }
-        }
-      },
-      "block_order": [
-        "collection-0",
-        "product",
-        "collection-1"
-      ],
-      "settings": {
-        "heading": "Multimedia collage",
-        "heading_size": "h2",
-        "desktop_layout": "left",
-        "mobile_layout": "collage",
-        "card_styles": "product-card-wrapper",
-        "color_scheme": "scheme-1",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "video": {
-      "type": "video",
-      "settings": {
-        "heading": "",
-        "heading_size": "h1",
-        "enable_video_looping": false,
-        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-        "description": "",
-        "full_width": false,
-        "color_scheme": "scheme-1",
-        "padding_top": 36,
-        "padding_bottom": 36
+        "title": "Explore Medical Braces And Supports",
+        "button_link": "shopify:\/\/collections\/all",
+        "button_text": "Shop Now",
+        "products": [
+          "dual-oa-reliever",
+          "iso-preferred-wrist-splint-neutral-position-stabilizer",
+          "iso-preferred-tlso-flex-w-trunk-support",
+          "iso-preferred-po-rom-elbow-brace"
+        ],
+        "image": "shopify:\/\/shop_images\/Preferred_L3760_L3761_ElbowBrace_1.png",
+        "overlay_title": "“We are always in need of elbow braces but we don’t order enough to justify the minimums of the big wholesalers. Med Braces Direct gives us the same prices without having to order huge quantities.”",
+        "overlay_subtitle": "Harry Smalls, MD  —  ISO-EL205x",
+        "image_link": "shopify:\/\/products\/iso-preferred-po-rom-elbow-brace"
       }
     },
     "multicolumn": {
@@ -173,8 +99,9 @@
         "column1": {
           "type": "column",
           "settings": {
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "image": "shopify:\/\/shop_images\/Ellipse_6.svg",
+            "title": "Bulk Pricing",
+            "text": "<p>We buy a lot, so you can save a lot too, no matter how much you buy. Of course we offer quantity discounts, but even if you just buy small amounts, you're still saving a bundle.<\/p>",
             "link_label": "",
             "link": ""
           }
@@ -182,8 +109,9 @@
         "column2": {
           "type": "column",
           "settings": {
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "image": "shopify:\/\/shop_images\/Ellipse_6.svg",
+            "title": "No Minimums",
+            "text": "<p>You don't have to buy a truckload to save — not from us. We buy in such large quantities, you save, regardless of your order size. So buy whatever quantity serves you best.<\/p>",
             "link_label": "",
             "link": ""
           }
@@ -191,8 +119,9 @@
         "column3": {
           "type": "column",
           "settings": {
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "image": "shopify:\/\/shop_images\/Ellipse_6.svg",
+            "title": "Direct Shipping",
+            "text": "<p>Take advantage of our setup. Our distribution center is ideally located; we're positioned perfectly for direct shipments to you.<\/p>",
             "link_label": "",
             "link": ""
           }
@@ -216,18 +145,158 @@
         "color_scheme": "scheme-1",
         "columns_mobile": "1",
         "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 36
+        "padding_top": 100,
+        "padding_bottom": 100
+      }
+    },
+    "testimonial-slider": {
+      "type": "testimonial-slider",
+      "blocks": {
+        "testimonial_XridbD": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/outsidegirl.jpg",
+            "content": "<p>\"We've been supplying the OA Dual Upright ROM to our customers for a while now, and the feedback has been excellent. The adjustability and support it offers make a big difference for people dealing with knee pain or recovery. It's a solid, reliable option that we highly recommend.\"<\/p>",
+            "author": "Sara L., DME Specialist"
+          }
+        },
+        "testimonial_j7m9VA": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/medman.jpg",
+            "content": "<p>\"As a pharmacy specializing in medical equipment, we've been recommending the ISO Preferred Wrist Splint to patients dealing with wrist injuries or post-surgery recovery, and it's quickly become a favorite. The adjustable ROM cuff allows for customized support and healing, and the lightweight, breathable material makes it comfortable for extended wear. Its universal fit and ambidextrous design make it easy to provide a solution for a wide range of patients.\"<\/p>",
+            "author": "John R., Pharmacy Equipment Specialist"
+          }
+        },
+        "testimonial_RCGpPJ": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/managerlady.jpg",
+            "content": "<p>\"We recommend the ISO Preferred TLSO Flex w\/Trunk Support to patients who need reliable trunk stabilization and pain relief. The adjustable shoulder straps and rigid lateral panels allow for a highly customizable fit, which is crucial for patients with varying body types. It's an excellent choice for managing spinal conditions, reducing disc load, and providing the necessary support during recovery or post-surgery.\"<\/p>",
+            "author": "Emily S., Physical Therapy Equipment Distributor"
+          }
+        },
+        "testimonial_GNDxTK": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/elbowguy-3.jpg",
+            "content": "<p>\"I purchased the ISO Preferred PO ROM Elbow Brace after elbow surgery, and it's been a huge help in my recovery. The adjustable range of motion settings allowed me to gradually increase mobility without compromising stability, and the lightweight design made it so much more comfortable than a traditional cast. It's easy to adjust, stays in place, and really helped speed up my healing process.\"<\/p>",
+            "author": "— David M., Elbow Surgery Patient"
+          }
+        },
+        "testimonial_694f4d": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/outsidegirl.jpg",
+            "content": "<p>\"We've been supplying the OA Dual Upright ROM to our customers for a while now, and the feedback has been excellent. The adjustability and support it offers make a big difference for people dealing with knee pain or recovery. It's a solid, reliable option that we highly recommend.\"<\/p>",
+            "author": "Sara L., DME Specialist"
+          }
+        },
+        "testimonial_rMjD3B": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/medman.jpg",
+            "content": "<p>\"As a pharmacy specializing in medical equipment, we've been recommending the ISO Preferred Wrist Splint to patients dealing with wrist injuries or post-surgery recovery, and it's quickly become a favorite. The adjustable ROM cuff allows for customized support and healing, and the lightweight, breathable material makes it comfortable for extended wear. Its universal fit and ambidextrous design make it easy to provide a solution for a wide range of patients.\"<\/p>",
+            "author": "John R., Pharmacy Equipment Specialist"
+          }
+        },
+        "testimonial_N3fqYz": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/managerlady.jpg",
+            "content": "<p>\"We recommend the ISO Preferred TLSO Flex w\/Trunk Support to patients who need reliable trunk stabilization and pain relief. The adjustable shoulder straps and rigid lateral panels allow for a highly customizable fit, which is crucial for patients with varying body types. It's an excellent choice for managing spinal conditions, reducing disc load, and providing the necessary support during recovery or post-surgery.\"<\/p>",
+            "author": "Emily S., Physical Therapy Equipment Distributor"
+          }
+        },
+        "testimonial_67e9xd": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/elbowguy-3.jpg",
+            "content": "<p>\"I purchased the ISO Preferred PO ROM Elbow Brace after elbow surgery, and it's been a huge help in my recovery. The adjustable range of motion settings allowed me to gradually increase mobility without compromising stability, and the lightweight design made it so much more comfortable than a traditional cast. It's easy to adjust, stays in place, and really helped speed up my healing process.\"<\/p>",
+            "author": "— David M., Elbow Surgery Patient"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_XridbD",
+        "testimonial_j7m9VA",
+        "testimonial_RCGpPJ",
+        "testimonial_GNDxTK",
+        "testimonial_694f4d",
+        "testimonial_rMjD3B",
+        "testimonial_N3fqYz",
+        "testimonial_67e9xd"
+      ],
+      "settings": {
+        "title": "WE KNOW THAT OUR\u2028DOCTORS ENJOY OUR SERVICE, BUT THEIR \u2028PATIENTS SAY IT BEST.",
+        "subtitle": "Testimonials from real patients",
+        "button_link": "shopify:\/\/pages\/contact",
+        "button_text": "Learn More"
+      }
+    },
+    "image_banner": {
+      "type": "image-banner",
+      "blocks": {
+        "image_Ji4YRa": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/mbd_logo_white_2.svg"
+          }
+        },
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "<em><strong>TOP-TIER MEDICAL\u2028BRACES AND SUPPORTS<\/strong><\/em>",
+            "heading_size": "h0"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "Supporting you, every step of the way.",
+            "text_style": "body"
+          }
+        },
+        "button": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Shop Now",
+            "button_link_1": "shopify:\/\/collections\/all",
+            "button_style_secondary_1": true,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "image_Ji4YRa",
+        "heading",
+        "text",
+        "button"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/abstractbg_1.jpg",
+        "image_overlay_opacity": 40,
+        "image_height": "large",
+        "desktop_content_position": "middle-right",
+        "show_text_box": false,
+        "desktop_content_alignment": "right",
+        "color_scheme": "scheme-3",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": false,
+        "show_text_below": false
       }
     }
   },
   "order": [
     "video_banner_EyKGcT",
-    "image_banner",
-    "rich_text",
-    "featured_collection",
-    "collage",
-    "video",
-    "multicolumn"
+    "search-bar",
+    "simple-text-section",
+    "product-showcase-stack",
+    "multicolumn",
+    "testimonial-slider",
+    "image_banner"
   ]
 }

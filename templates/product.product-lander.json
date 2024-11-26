@@ -11,7 +11,7 @@
           "type": "product_ids",
           "settings": {}
         },
-        "variation_order_summary_EAJjqm": {
+        "variation_order_summary_6CRJQ7": {
           "type": "variation_order_summary",
           "settings": {
             "heading": "Variation Order Summary"
@@ -40,7 +40,7 @@
       "block_order": [
         "title",
         "product_ids_PURFyq",
-        "variation_order_summary_EAJjqm",
+        "variation_order_summary_6CRJQ7",
         "buy_buttons",
         "documentation",
         "description"
@@ -59,6 +59,27 @@
         "enable_video_looping": false,
         "padding_top": 36,
         "padding_bottom": 12
+      }
+    },
+    "simple_text_section_3PyEmW": {
+      "type": "simple-text-section",
+      "settings": {
+        "title": "Dual OA Reliever: Enhanced Knee Stabilization and Pain Relief",
+        "content": "<p>The OA Dual Upright ROM provides stability for treating mild injuries of the collateral ligaments, menisci, and patellar retinaculum, and offers support and relief for chronic knee pain, instability, loose bodies, cartilage or meniscus tears, sprains, strains, and old ACL disruptions.<\/p>",
+        "background_color": "#f5bb00",
+        "text_color": "#00003c"
+      }
+    },
+    "spline_section_UAjfa7": {
+      "type": "spline-section",
+      "settings": {
+        "title": "{{ product.title }}",
+        "description": "State-of-the-art knee orthosis, double upright, with thigh and calf support, adjustable flexion and extension joint, medial-lateral and rotation control, and varus\/valgus adjustment—designed to ensure controlled movement, reducing healing time and discomfort.",
+        "model_num": "",
+        "hcpcs": "{{ product.metafields.theme.product_hcpcs.value }}",
+        "button_link": "#ProductInfo-template--16608667238539__main",
+        "button_text": "Order Now",
+        "spline_src": "https:\/\/prod.spline.design\/0J-9OFhpMeAAgx3l\/scene.splinecode"
       }
     },
     "product-details": {
@@ -93,6 +114,8 @@
   },
   "order": [
     "main",
+    "simple_text_section_3PyEmW",
+    "spline_section_UAjfa7",
     "product-details",
     "related-products",
     "17153675090c0d509a"

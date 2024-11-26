@@ -1,0 +1,221 @@
+{% schema %}
+{
+  "name": "Spline Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "text",
+      "id": "model_num",
+      "label": "Model Number"
+    },
+    {
+      "type": "text",
+      "id": "hcpcs",
+      "label": "HCPCS"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text"
+    },
+    {
+      "type": "url",
+      "id": "spline_src",
+      "label": "Spline Embed URL"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Spline Section"
+    }
+  ]
+}
+{% endschema %}
+
+{{ 'flickity.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'flickity.pkgd.min.js' | asset_url }}" defer="defer"></script>
+
+<style>
+.spline-desktop-content {
+      display: none;
+    }
+    .spline-mobile-content {
+      display: none;
+    }
+    @media only screen and (max-width: 1260px) {
+      .spline-mobile-content {
+        display: block;
+      }
+    }
+ 
+  /* Mobile slider styles */
+  .product-slider {
+    width: 100%;
+  }
+  .page-width.feat-slider-wrap {
+    padding: 0!important;
+    position: relative;
+    max-width: unset!important;
+    padding-top: 10vw!important; 
+  } 
+  .product-slider__slide {
+    width: 100%;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    bottom:0;
+  }
+  .product-slider__image {
+    width: 100%;
+    height: auto;
+    display: block;
+    max-width: 800px;
+    object-fit: contain;
+    object-position: left;
+    max-height: 800px;
+  }
+  .product-slider .flickity-button,
+  .product-slider .flickity-page-dots {
+    display: none;
+  }
+  .slide-content {
+    background: #00003c;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    min-height: fit-content;
+  }
+  .product-slider__title {
+    margin: 0; 
+    text-align: left;
+    font-size: 16px;
+    color: #ffffff; 
+    font-weight: 500;
+    line-height: 1.4;
+    width: 100%;
+    padding: 30px 15px;
+    text-align: center;
+  }
+  .next-feature-button {
+    position: absolute; 
+    right: 2rem;
+    bottom: 150px;
+    background: #ffffff;
+    color: #4C1D95;
+    padding: 15px 20px;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+    cursor: pointer;
+    border: none; 
+    transition: transform 0.2s;
+    white-space: nowrap;
+    font-size: 16px; 
+    color: #1C0038;
+    letter-spacing: -0.32px;
+    border: 1px solid #00003c;
+  }
+  .next-feature-button:hover {
+    transform: translateX(4px);
+  }
+  .next-feature-button svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+</style>
+
+<div class="spline-whole-wrap">
+  <div class="custom-product-info spline-section">
+    <div class="custom-product-info__container page-width">
+      <div class="custom-product-info__content">
+        <p class="product-ids"><strong>HCPCS:</strong> {{ section.settings.hcpcs }}</p>
+        <h2 class="custom-product-info__title">{{ section.settings.title }}</h2>
+        <p>{{ section.settings.description }}</p>
+        
+        {% if section.settings.button_link != blank and section.settings.button_text != blank %}
+          <a href="{{ section.settings.button_link }}" class="button button--yellow">{{ section.settings.button_text }}</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <div class="spline-mobile-content">
+    {%- assign slider_images = product.metafields.theme.product_slider_images.value -%}
+    {%- assign slider_titles = product.metafields.theme.product_slider_titles.value -%}
+
+    {%- if slider_images != blank -%}
+      <div class="page-width feat-slider-wrap">
+        <div class="product-slider">
+          {%- for image in slider_images -%}
+            <div class="product-slider__slide">
+              <img 
+                src="{{ image | image_url: width: 800 }}"
+                alt="{{ slider_titles[forloop.index0] | escape }}"
+                class="product-slider__image"
+                loading="lazy"
+                width="800"
+                height="800"
+              >
+              <div class="slide-content">
+                {%- if slider_titles[forloop.index0] != blank -%}
+                  <div class="product-slider__title">{{ slider_titles[forloop.index0] }}</div>
+                {%- endif -%}
+                <button class="next-feature-button">
+                  Next feature
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+    {%- endif -%}
+
+    <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var slider = document.querySelector('.product-slider');
+    if (!slider) return;
+
+    var flkty = new Flickity(slider, {
+      cellAlign: 'left',
+      contain: true,
+      prevNextButtons: false,
+      pageDots: false,
+      wrapAround: true,
+      draggable: true
+    });
+    
+    var nextButtons = slider.querySelectorAll('.next-feature-button');
+    nextButtons.forEach(function(button) {
+      button.onclick = function(e) {
+        e.preventDefault();
+        flkty.next();
+      };
+    });
+  });
+</script>
+  </div>
+
+  
+</div>
+

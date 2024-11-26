@@ -1,0 +1,192 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 100,
+        "padding_bottom": 60,
+        "button_text": "Contact Us",
+        "button_link": "shopify:\/\/pages\/contact"
+      }
+    },
+    "collapsible_content_rGHcPb": {
+      "type": "collapsible-content",
+      "blocks": {
+        "collapsible_row_BhntCC": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What is the minimum order quantity for wholesale purchases?",
+            "icon": "none",
+            "row_content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<\/p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_3ankRW": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What are the payment terms for wholesale purchases?",
+            "icon": "none",
+            "row_content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<\/p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_4thfHN": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Are there any restrictions on selling your products through certain channels for wholesale customers?",
+            "icon": "none",
+            "row_content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<\/p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_ABFFAC": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Can I cancel my order?",
+            "icon": "none",
+            "row_content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<\/p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_BhntCC",
+        "collapsible_row_3ankRW",
+        "collapsible_row_4thfHN",
+        "collapsible_row_ABFFAC"
+      ],
+      "settings": {
+        "caption": "",
+        "heading": "Ordering",
+        "heading_size": "h2",
+        "heading_alignment": "left",
+        "layout": "none",
+        "color_scheme": "scheme-2",
+        "container_color_scheme": "",
+        "open_first_collapsible_row": false,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 80,
+        "padding_bottom": 36
+      }
+    },
+    "collapsible_content_k6pEiA": {
+      "type": "collapsible-content",
+      "blocks": {
+        "collapsible_row_eaYFya": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How are shipping costs calculated?",
+            "icon": "none",
+            "row_content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<\/p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_3ddwNW": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "When can I expect my order to arrive?",
+            "icon": "none",
+            "row_content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<\/p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_T694UY": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What is your return policy?",
+            "icon": "none",
+            "row_content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<\/p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_D6NgjL": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Is there a restocking fee?",
+            "icon": "none",
+            "row_content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<\/p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_TThWRn": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Will I have to pay the shipping fee on a return?",
+            "icon": "none",
+            "row_content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<\/p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_eaYFya",
+        "collapsible_row_3ddwNW",
+        "collapsible_row_T694UY",
+        "collapsible_row_D6NgjL",
+        "collapsible_row_TThWRn"
+      ],
+      "settings": {
+        "caption": "",
+        "heading": "Shipping and Returns",
+        "heading_size": "h2",
+        "heading_alignment": "left",
+        "layout": "none",
+        "color_scheme": "scheme-2",
+        "container_color_scheme": "",
+        "open_first_collapsible_row": false,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    },
+    "collapsible_content_GE6ecK": {
+      "type": "collapsible-content",
+      "blocks": {
+        "collapsible_row_4AyVRP": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What products are eligible for insurance?",
+            "icon": "none",
+            "row_content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<\/p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_nQBMWT": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How can I find the HCPCS Code in products?",
+            "icon": "none",
+            "row_content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<\/p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_4AyVRP",
+        "collapsible_row_nQBMWT"
+      ],
+      "settings": {
+        "caption": "",
+        "heading": "Insurance",
+        "heading_size": "h2",
+        "heading_alignment": "left",
+        "layout": "none",
+        "color_scheme": "scheme-2",
+        "container_color_scheme": "",
+        "open_first_collapsible_row": false,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 20,
+        "padding_bottom": 100
+      }
+    }
+  },
+  "order": [
+    "main",
+    "collapsible_content_rGHcPb",
+    "collapsible_content_k6pEiA",
+    "collapsible_content_GE6ecK"
+  ]
+}

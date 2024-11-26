@@ -98,6 +98,29 @@
                       {{ block.settings.button_label | escape }}
                     </a>
                   {%- endif -%}
+                  {%- when 'double_column_list' -%}
+                    <div class="double-column-list">
+                      <h3 class="subtitle">{{ block.settings.subtitle }}</h3>
+                      <div class="double-list-wrap">
+                        
+                          {{ block.settings.left_column }}
+                        
+                        </div>
+                    </div>
+                  {%- when 'wysiwyg_1' -%}
+                    <div class="wysiwyg-block">
+                      <h3 class="subtitle">{{ block.settings.subtitle }}</h3>
+                      <div class="wysiwyg-content">
+                        {{ block.settings.content }} 
+                      </div>
+                    </div>
+                  {%- when 'wysiwyg_2' -%}
+                    <div class="wysiwyg-block">
+                      <h3 class="subtitle">{{ block.settings.subtitle }}</h3>
+                      <div class="wysiwyg-content">
+                        {{ block.settings.content }}
+                      </div>
+                    </div>
               {%- endcase -%}
             {%- endfor -%}
           </div>
@@ -324,6 +347,69 @@
     }
   ],
   "blocks": [
+    {
+    "type": "double_column_list",
+    "name": "Double Column List",
+    "limit": 1,
+    "settings": [
+      {
+        "type": "text",
+        "id": "subtitle",
+        "label": "Subtitle",
+        "default": "Subtitle"
+      },
+      {
+        "type": "richtext",
+        "id": "left_column",
+        "label": "Left Column",
+        "default": "<p>Left column content</p>"
+      },
+      {
+        "type": "richtext",
+        "id": "right_column",
+        "label": "Right Column",
+        "default": "<p>Right column content</p>"
+      }
+    ]
+  },
+  {
+    "type": "wysiwyg_1",
+    "name": "WYSIWYG 1",
+    "limit": 1,
+    "settings": [
+      {
+        "type": "text",
+        "id": "subtitle",
+        "label": "Subtitle",
+        "default": "Subtitle 1"
+      },
+      {
+        "type": "richtext",
+        "id": "content",
+        "label": "Content",
+        "default": "<p>WYSIWYG content 1</p>"
+      }
+    ]
+  },
+  {
+    "type": "wysiwyg_2",
+    "name": "WYSIWYG 2",
+    "limit": 1,
+    "settings": [
+      {
+        "type": "text",
+        "id": "subtitle",
+        "label": "Subtitle",
+        "default": "Subtitle 2"
+      },
+      {
+        "type": "richtext",
+        "id": "content",
+        "label": "Content",
+        "default": "<p>WYSIWYG content 2</p>"
+      }
+    ]
+  },
     {
       "type": "heading",
       "name": "t:sections.image-with-text.blocks.heading.name",

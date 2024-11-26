@@ -1,0 +1,86 @@
+<div class="variation-order-summary">
+  <style>
+    .variant-price-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+      max-width: 470px;
+      border-radius: 8px;
+    }
+    .variant-price-table th, .variant-price-table td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: center;
+    }
+    .variant-price-table th {
+      background-color: rgba(28, 0, 56, 0.05);
+      color: #7460DE;
+    }
+  </style>
+
+  {% assign default_variant = product.selected_or_first_available_variant %}
+  {% assign default_variant_id = default_variant.id %}
+  {% assign default_variant_price = default_variant.price %}
+
+  <table class="variant-price-table" data-product-id="{{ product.id }}">
+    
+    <tbody>
+      
+        <tr>
+          
+          
+            
+            <td 
+              data-variant-id="{{ default_variant_id | default: 'unavailable' }}"
+              data-price="{{ default_variant_price | default: '' }}"
+            >
+              
+              <div class="variant-vals-wrapper opacity-zero">
+               <span class="variation-quantity">0</span><span class='multiplier'>x</span><span class="variation-price">{{ default_variant_price | money}}</span> 
+              </div>
+               
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+  <script>
+    
+
+    // Function to set up event listeners
+    function setupEventListeners() {
+      // Listen for cart updates
+      document.addEventListener('cart:updated', updateQuantities);
+      
+      // Listen for add to cart button clicks
+      const addToCartButtons = document.querySelectorAll('form[action="/cart/add"] button[type="submit"]');
+      addToCartButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          // Wait a short time for the cart to update before refreshing quantities
+          setTimeout(updateQuantities, 500);
+        });
+      });
+
+      // Listen for Ajax API requests (for themes using Shopify's Ajax API)
+      const originalFetch = window.fetch;
+      window.fetch = function(...args) {
+        const result = originalFetch.apply(this, args);
+        if (args[0] && typeof args[0] === 'string' && args[0].includes('/cart/add')) {
+          result.then(() => {
+            setTimeout(updateQuantities, 500);
+          });
+        }
+        return result;
+      };
+    }
+
+    // Call updateQuantities on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      updateQuantities();
+      setupEventListeners();
+    });
+
+    // If using Shopify's sections:load event (for section rendering)
+    document.addEventListener('shopify:section:load', setupEventListeners);
+  </script>
+</div>

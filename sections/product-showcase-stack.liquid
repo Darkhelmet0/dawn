@@ -1,0 +1,91 @@
+<div class="product-showcase-stack section-padding">
+  <div class="page-width">
+    <div class="product-showcase-head flex flex-sb">
+      <h2 class="product-showcase-stack__title">{{ section.settings.title }}</h2>
+      <a href="{{ section.settings.button_link }}" alt="{{ section.settings.button_text }}" class="button button--secondary">
+        {{ section.settings.button_text }}
+      </a>
+    </div>
+    <div class="product-showcase-wrap">
+      <div class="product-showcase-row">
+      {% assign looplimit = section.settings.products.count | minus: 1 %}
+        {% for prod in section.settings.products limit: looplimit %} 
+          <div class="related-card-wrap" >
+            {% render 'card-product', card_product: prod %}
+          </div>
+        {% endfor %}
+      </div>
+      <div class="product-showcase-row w-img">
+        <a class="image-tile" href="{{ section.settings.image_link }}" style="background-image: url({{ section.settings.image | img_url: 'large' }}); background-repeat:no-repeat; background-size:cover;background-position:center center;">
+          {% comment %} <img src="{{ section.settings.image | img_url: 'large' }}" alt="{{ section.settings.image.alt }}"> {% endcomment %}
+          <div class="image-tile-overlay">
+            <div class="image-tile-content">
+                <p class="card-feat-subtitle">{{ section.settings.overlay_subtitle }}</p>
+                <h3 class='tc-white'>{{ section.settings.overlay_title }}</h3>
+            </div>
+          </div>
+        </a>
+        {% assign last_product = section.settings.products | last %}
+        <div class="related-card-wrap">
+          {% render 'card-product', card_product: last_product %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Product Showcase Stack",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Featured Products"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "View All"
+    },
+    {
+      "type": "product_list",
+      "id": "products",
+      "label": "Products",
+      "limit": 5
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "overlay_title",
+      "label": "Overlay Title"
+    },
+    {
+      "type": "text",
+      "id": "overlay_subtitle",
+      "label": "Overlay Subtitle"
+    },
+    {
+      "type": "url",
+      "id": "image_link",
+      "label": "Image Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Showcase Stack"
+    }
+  ]
+}
+{% endschema %}

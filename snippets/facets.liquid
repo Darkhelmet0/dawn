@@ -29,6 +29,16 @@
 -%}
 
 <div class="facets-container{% if filter_type == 'drawer' %} facets-container-drawer{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+  <h1 class="h2">
+    <span class="visually-hidden">
+      {{- 'sections.collection_template.title' | t -}}:
+    </span>
+    {%- if collection.title -%}
+      {{- collection.title | escape -}}
+    {%- elsif request.page_type == 'search' -%}
+      Results
+    {%- endif -%}
+  </h1>
   {%- if filter_type == 'vertical' or filter_type == 'horizontal' -%}
     <facet-filters-form class="facets small-hide">
       <form

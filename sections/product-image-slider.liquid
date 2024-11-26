@@ -1,0 +1,239 @@
+{{ 'flickity.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'flickity.pkgd.min.js' | asset_url }}" defer="defer"></script>
+
+<style>
+  .product-slider {
+    width: 100%;
+    
+  }
+  .page-width.feat-slider-wrap{
+    padding:0!important;
+    position: relative;
+   background: radial-gradient(circle at 50% 107%, #7460deab, #fffef6cf 77%);
+    max-width: unset!important;
+    padding-top:10vw!important;
+
+  }
+     
+  .xpage-width.feat-slider-wrap::before {
+    position: absolute;
+    z-index: -1;
+    content: "";
+    left: -25%;
+    right: 0;
+    top: 0;
+    bottom: -50%;
+    background: radial-gradient(circle, #7460deab, #fffef6cf 67%);
+}
+  .product-slider__slide {
+    width: 100%;
+    padding: 0;
+    position: relative;
+  }
+
+  .product-slider__image {
+    width: 100%;
+    height: auto;
+    display: block;
+    aspect-ratio: 1/1;
+    max-width: 800px;
+    margin-right: auto;
+  }
+
+  /* Hide default Flickity navigation */
+  .product-slider .flickity-button,
+  .product-slider .flickity-page-dots {
+    display: none;
+  }
+
+  /* Custom slide content */
+  .slide-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #00003c;
+    padding: 1.5rem;
+    
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    min-height: fit-content;
+  }
+  
+  .product-slider__title {
+    margin: 0;
+    text-align: left;
+    font-size: {{ section.settings.title_size }}px;
+    color: #ffffff; 
+    font-weight: 500;
+    line-height: 1.4;
+    width: 100%;
+    padding:30px 15px;
+    text-align:center;
+  }
+  
+  /* Custom navigation button */
+  .next-feature-button {
+    position: absolute; 
+    right: 2rem;
+    top: -100px;
+    background: #ffffff;
+    color: #4C1D95;
+    padding: 15px 20px;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+    cursor: pointer;
+    border: none; 
+    transition: transform 0.2s;
+    white-space: nowrap; /* Prevent button text from wrapping */
+    font-size: 16px; 
+    color: #1C0038;
+    letter-spacing: -0.32px;
+    border: 1px solid #00003c;
+  }
+
+  .next-feature-button:hover {
+    transform: translateX(4px);
+  }
+
+  .next-feature-button svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  @media screen and (max-width: 749px) {
+    .slide-content {
+      padding: 1rem;
+    }
+    
+    .product-slider__title {
+      font-size: calc({{ section.settings.title_size }}px * 0.85);
+      
+    }
+    
+  
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Initialize all sliders
+    var sliders = document.querySelectorAll('.product-slider');
+    sliders.forEach(function(slider) {
+      var flkty = new Flickity(slider, {
+        cellAlign: 'left',
+        contain: true,
+        prevNextButtons: false,
+        pageDots: false,
+        wrapAround: true
+      });
+      
+      // Add click handlers to next feature buttons in this slider
+      var nextButtons = slider.querySelectorAll('.next-feature-button');
+      nextButtons.forEach(function(button) {
+        button.addEventListener('click', function(e) {
+          e.preventDefault();
+          flkty.next();
+        });
+      });
+    });
+  });
+</script>
+
+{%- assign slider_images = product.metafields.theme.product_slider_images.value -%}
+{%- assign slider_titles = product.metafields.theme.product_slider_titles.value -%}
+
+{%- if slider_images != blank -%}
+  <div class="page-width feat-slider-wrap">
+    <div class="product-slider">
+      {%- for image in slider_images -%}
+        <div class="product-slider__slide">
+          <img 
+            src="{{ image | image_url: width: section.settings.image_width }}"
+            alt="{{ slider_titles[forloop.index0] | escape }}"
+            class="product-slider__image"
+            loading="lazy"
+            width="{{ section.settings.image_width }}"
+            height="{{ section.settings.image_width }}"
+          >
+          <div class="slide-content">
+            {%- if slider_titles[forloop.index0] != blank -%}
+              <div class="product-slider__title">{{ slider_titles[forloop.index0] }}</div>
+            {%- endif -%}
+            <button class="next-feature-button">
+              Next feature
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Product Image Slider",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout Settings"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Top Margin",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Bottom Margin",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "image_width",
+      "min": 400,
+      "max": 1200,
+      "step": 100,
+      "unit": "px",
+      "label": "Image Width",
+      "default": 800
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "min": 12,
+      "max": 36,
+      "step": 1,
+      "unit": "px",
+      "label": "Title Font Size",
+      "default": 16
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Image Slider",
+      "category": "Product"
+    }
+  ]
+}
+{% endschema %}

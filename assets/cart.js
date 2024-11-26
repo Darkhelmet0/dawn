@@ -249,3 +249,242 @@ if (!customElements.get('cart-note')) {
     }
   );
 }
+
+
+
+const customRepaint = function () {
+  // alert('repaint-called whoo');
+  document.querySelectorAll('#CartDrawer .loading__spinner').forEach(el => {
+    el.classList.add('hidden');
+  });
+  document.querySelectorAll('#CartDrawer .loading__text').forEach(el => {
+    el.classList.add('hidden');
+  });
+  document.querySelectorAll('#CartDrawer .totals').forEach(el => {
+    el.classList.remove('hidden');
+  });
+
+  document.querySelectorAll('.price-swap').forEach(el => {
+    el.classList.remove('hidden');
+  });
+
+  document.querySelectorAll('.variant-vals-wrapper').forEach(el => {
+
+    let par = el.closest('td');
+    //data-variant-id
+    par.dataset.variantId;
+    let curIn = document.querySelector('.size-inputs input[data-variant-id="' + par.dataset.variantId + '"]');
+    if (curIn.value > 0) {
+      el.classList.remove('opacity-zero');
+    } else {
+      el.classList.add('opacity-zero');
+    }
+
+  });
+
+  updateQuantities();
+  //update qtys
+};
+
+
+const variationInputs = document.querySelectorAll('.size-inputs input[type="number"]');
+
+
+variationInputs.forEach(input => {
+
+
+  input.addEventListener('change', function () {
+    // Get the current value
+    let totalCartQty = 0;
+    let tempQty = 0;
+    console.log(totalCartQty);
+
+    let pts = document.querySelectorAll('.variant-price-table td');
+
+    pts.forEach((pt) => {
+      totalCartQty += parseInt(pt.dataset.cartquantity);
+    });
+    console.log(totalCartQty);
+
+    variationInputs.forEach(vi => {
+      console.log(vi.value);
+      tempQty += parseInt(vi.value);
+      vi.value = parseInt(vi.value);
+      totalCartQty += parseInt(vi.value);
+    })
+
+
+
+    console.log(`Size ${this.closest('.size-input-group').querySelector('.size-label').textContent} changed to ${this.value}`);
+    console.log('totalqty:', totalCartQty);
+    console.log('tempqty:', tempQty);
+
+
+    let curInput = this.closest('input');
+    console.log(curInput.dataset);
+    // data-cartquantity
+    // data-variant-id
+
+
+    let curTd = document.querySelector('.variant-price-table td[data-variant-id="' + curInput.dataset.variantId + '"]');
+    if (curTd) {
+      curTd.querySelector('.variation-quantity').innerText = curInput.value;
+
+      if (curInput.value > 0) {
+        curTd.querySelector('.variant-vals-wrapper').classList.remove('opacity-zero');
+      } else {
+        curTd.querySelector('.variant-vals-wrapper').classList.add('opacity-zero');
+      }
+
+
+      console.log(curTd.querySelector('.variant-vals-wrapper'));
+    }
+
+
+    if (sc_gqbreak_app_global.curr_qb_price_tiers) {
+      console.log('price tiers found');
+
+      let priceTiers = sc_gqbreak_app_global.curr_qb_price_tiers;
+
+      priceTiers.forEach(tier => {
+        console.log(tier);
+        if (parseInt(totalCartQty) >= parseInt(tier.quantity)) {
+          console.log('tier matched');
+          console.log('TEMP TOTAL CART:', tempQty * tier.price);
+          if (tempQty > 0) {
+            document.querySelector('.temp-subtotal-submit').innerText = ' - $' + formatPrice(parseInt(tempQty) * parseFloat(tier.price))
+            document.querySelectorAll('.variant-price-table .variation-price').forEach(el => { el.innerText = "$" + formatPrice(tier.price) + " " });
+          } else {
+            document.querySelector('.temp-subtotal-submit').innerText = "";
+          }
+        }
+      });
+
+      //calcuate temp totals for btn
+
+    } else {
+      const defaultPrice = formatPrice(parseFloat(selected_variant.price) * this.value / 100);
+      console.log('TEMP TOTAL CART NO V:', defaultPrice);
+      console.log(this);
+      if (tempQty > 0) {
+        document.querySelector('.temp-subtotal-submit').innerText = ' - $' + defaultPrice;
+      } else {
+        document.querySelector('.temp-subtotal-submit').innerText = "";
+      }
+    }
+  });
+});
+
+function updateQuantities() {
+  fetch('/cart.js')
+    .then(response => response.json())
+    .then(cart => {
+
+      console.log('update-qty return', cart);
+      if (cart.item_count == 0) {
+
+        console.log('no items in cart');
+        document.getElementById("cart-icon-bubble").innerHTML = `Cart <span aria-hidden="true">&nbsp;(0)</span>`;
+      }
+      const variantQuantities = {};
+
+      // Create a map of variant IDs to quantities
+      cart.items.forEach(item => {
+        variantQuantities[item.variant_id] = item.quantity;
+      });
+
+      // Update quantities in the table
+
+      if (document.querySelector('.variant-price-table td')) {
+        const cells = document.querySelectorAll('.variant-price-table td');
+        cells.forEach(cell => {
+          const variantId = cell.dataset.variantId;
+          cell.setAttribute('data-cartquantity', variantQuantities[variantId] || 0);
+        });
+
+        inputsIsoUpdate();
+      } else {
+        let sgs = document.querySelectorAll(".size-inputs input");
+        let nullino = false;
+        sgs.forEach((sg) => {
+          console.log(sg.value);
+          console.log(sg);
+          if (sg.value > 0) {
+            nullino = true;
+          }
+        })
+        if (nullino) {
+          console.log('keep current');
+        } else {
+          document.querySelector('.temp-subtotal-submit').innerText = "";
+        }
+
+      }
+
+    })
+    .catch(error => console.error('Error fetching cart:', error));
+
+}
+
+function inputsIsoUpdate() {
+  console.log('iso');
+  let totalCartQty = 0;
+  let tempQty = 0;
+
+  let pts = document.querySelectorAll('.variant-price-table td');
+  pts.forEach((pt) => {
+    totalCartQty += parseInt(pt.dataset.cartquantity);
+  });
+
+  variationInputs.forEach(vi => {
+    console.log(vi.value);
+    tempQty += parseInt(vi.value);
+    vi.value = parseInt(vi.value);
+    totalCartQty += parseInt(vi.value);
+  })
+
+  if (sc_gqbreak_app_global.curr_qb_price_tiers) {
+    console.log('price tiers found');
+
+    let priceTiers = sc_gqbreak_app_global.curr_qb_price_tiers;
+
+    priceTiers.forEach(tier => {
+      console.log(tier);
+      if (parseInt(totalCartQty) >= parseInt(tier.quantity)) {
+        console.log('tier matched');
+        console.log('TEMP TOTAL CART:', tempQty * tier.price);
+        if (tempQty > 0) {
+          document.querySelector('.temp-subtotal-submit').innerText = '- $' + formatPrice(parseInt(tempQty) * parseFloat(tier.price));
+          document.querySelectorAll('.variant-price-table .variation-price').forEach(el => { el.innerText = "$" + formatPrice(tier.price) + " " });
+        } else {
+          document.querySelector('.temp-subtotal-submit').innerText = "";
+        }
+      }
+    });
+  }
+}
+
+function formatPrice(price) {
+  // Convert to a number if it's a string
+  price = parseFloat(price);
+
+  // Check if the price has decimal places
+  if (price % 1 !== 0) {
+    // If it has decimals, format to always show 2 decimal places
+    return price.toFixed(2);
+  } else {
+    // If it's a whole number, return as is
+    return price.toString();
+  }
+}
+
+if (document.querySelector('.product-form form')) {
+  document.querySelector('.product-form form').addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+      console.log('enter captured');
+      e.preventDefault();
+      return false;
+    }
+  });
+}
+

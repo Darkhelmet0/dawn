@@ -1,0 +1,89 @@
+<div class="section_product-details bg-yellow section-padding">
+    <div class="page-width">
+        <div class="product_more-details clearfix">
+            <div class="float-right info-float-wrap fifty">
+                <div class="more-info-img">
+                    <img src="{{ product.metafields.theme.details_image | img_url: '580x690' }}" alt="Product Details Image">
+                </div>
+            </div>
+            <h2>Product Description</h2>
+            {%- if product.metafields.theme.product_features != blank -%}
+                <h3>
+                    {%- if product.metafields.theme.product_features_title != blank -%}
+                        {{ product.metafields.theme.product_features_title }}
+                    {%- else -%}
+                        Features
+                    {%- endif -%}
+                </h3>
+                <div class="double-list-wrap"> 
+                   {% comment %} {{product.metafields.theme.product_features}}  {% endcomment %}
+                   {% assign features = product.metafields.theme.product_features | replace: '[', '' | replace: ']', '' | split: '","' %}
+                    <ul class="metafield-single_line_text_field-array">
+                        {% for feature in features %}
+                            <li class="metafield-single_line_text_field">{{ feature | strip | remove: '"' }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {%- endif -%}
+            {%- if product.metafields.theme.product_intent != blank -%}
+                <h3>
+                    {%- if product.metafields.theme.product_intent_title != blank -%}
+                        {{ product.metafields.theme.product_intent_title }}
+                    {%- else -%}
+                        Intended for...
+                    {%- endif -%}
+                </h3>
+                <div class="intended-for-wrap">
+                    {{ product.metafields.theme.product_intent | metafield_tag }}
+                </div>
+            {%- endif -%}
+            <h3>
+            {%- if product.metafields.theme.product_size_title != blank -%}
+                {{ product.metafields.theme.product_size_title }}
+            {%- else -%}
+                Sizing Information
+            {%- endif -%}
+            </h3>
+            <div class="size-info-wrap">
+            
+            {{ product.metafields.theme.product_size_info | metafield_tag }}
+            
+            {%- if product.metafields.theme.sizing_chart != blank -%}
+                <table data-class='product-size-chart'>
+                    <thead>
+                        <tr>
+                        {% for header in product.metafields.theme.sizing_chart.value.headers %}
+                            <th>{{ header.label }}</th>
+                        {% endfor %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in product.metafields.theme.sizing_chart.value.data %}
+                        <tr>
+                            {% for header in product.metafields.theme.sizing_chart.value.headers %}
+                            <td>{{ row[header.key] }}</td>
+                            {% endfor %}
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {%- endif -%}
+            </div>
+        </div>
+    </div>
+</div>
+
+{%- if product.metafields.theme.similar_products.value != blank -%}
+<div class="section_related-products section-padding">
+    <div class="page-width">
+        <h2>Accessories and similar products</h2>
+        <div class="related_wrapper flex side_bar"> 
+            {% for prod in product.metafields.theme.similar_products.value %}
+                <div class="related-card-wrap">
+                    {% render 'card-product', card_product: prod %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div> 
+{%- endif -%}

@@ -40,6 +40,9 @@
       <script src="{{ 'animations.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
 
+    {{ 'flickity.css' | asset_url | stylesheet_tag }}
+    <script src="{{ 'flickity.pkgd.min.js' | asset_url }}" defer></script>
+
     {{ content_for_header }}
 
     {%- liquid

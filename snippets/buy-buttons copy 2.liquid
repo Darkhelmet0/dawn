@@ -23,8 +23,8 @@
         assign show_dynamic_checkout = true
       endif
 
-      assign sizes = product.options_by_name['Size'].values | default: empty 
-      assign sides = product.options_by_name['Side'].values | default: empty
+      assign sizes = product.options_by_name['Size'].values
+      assign sides = product.options_by_name['Side'].values
     -%}
 
     <product-form class="product-form" data-hide-errors="{{ gift_card_recipient_feature_active }}" data-section-id="{{ section.id }}">
@@ -53,7 +53,7 @@
         {%- if gift_card_recipient_feature_active -%}
           {%- render 'gift-card-recipient-form', product: product, form: form, section: section -%}
         {%- endif -%}
-{%- if sizes.size > 0 and sides.size > 0 -%}
+
         <div class="product-form__variants">
           <table class="variant-table">
             <thead>
@@ -93,34 +93,9 @@
             </tbody>
           </table>
         </div>
-        
+
          <h3 class="subtitle">Order Summary</h3>
         {%- render 'variation-order-summary', product: product -%}
-
-        {%- else -%}
-
-        {% assign variant = product.selected_or_first_available_variant %}
-        <div class="size-inputs" style="margin-bottom: 1.5rem;">
-            <div class="size-input-group" style="max-width:120px;">
-              <span class="size-label">Qty.</span>
-              <button type="button" class="quantity-button minus">-</button>
-              <input
-                type="number"
-                id="Quantity-{{ variant.id }}"
-                name="items[{{ variant.id }}][quantity]"
-                data-variant-id="{{ variant.id }}"
-                value="0"
-                min="0"
-                class="product-form__quantity"
-                {% unless variant.available %}disabled{% endunless %}
-              >
-              <button type="button" class="quantity-button plus">+</button>
-            </div>
-          </div>
-          
-          {%- render 'variation-order-summary-novariants', product: product -%}
-        {%- endif -%}
-        
         
 
         <div class="product-form__buttons">
@@ -253,7 +228,6 @@
   padding-left: 1rem;
   font-weight: bold;
   border-right: 1px solid #1C0038; 
-  font-weight: 400;
 }
 
 .product-form__quantity {
@@ -275,7 +249,7 @@
   border: none;
   font-size: 1.2rem;
   cursor: pointer;
-  padding: 8px;
+  padding: 0 0.5rem;
 }
 
 .quantity-button:hover {

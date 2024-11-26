@@ -1,0 +1,55 @@
+<div class="simple-text-section" style="background-color: {{ section.settings.background_color }}; color: {{ section.settings.text_color }};">
+  <div class="page-width">
+    <div class="simple-text-section__inner">
+      {%- if section.settings.title != blank -%}
+        <h2 class="simple-text-section__title">{{ section.settings.title | escape }}</h2>
+      {%- endif -%}
+
+      {%- if section.settings.content != blank -%}
+        <div class="simple-text-section__content-wrap">
+            <div class="simple-text-section__content">
+                {{ section.settings.content }}
+            </div>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Simple Text Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Simple Text Section"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Content",
+      "default": "<p>Add your simple text content here.</p>"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#F5BB00"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#00003C"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Simple Text Section",
+      "category": "Text"
+    }
+  ]
+}
+{% endschema %}

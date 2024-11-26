@@ -70,6 +70,24 @@
     <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
       <div class="grid__item product__media-wrapper">
         {% render 'product-media-gallery', variant_images: variant_images %}
+         
+              <div class="product-pricesheet">
+                {%- assign pricebreaks = product.metafields.theme.product_price_sheet.value -%}
+                {% if pricebreaks.size > 0 %}
+                  {% for pricebreak in pricebreaks %} 
+                    <div class="pricebreak-row">
+                      <div class="pricebreak-label pb-fifty">
+                        {{ pricebreak.label }}
+                      </div>
+                      <div class="pricebreak-value pb-fifty">
+                        ${{ pricebreak.value }}
+                      </div>
+                    </div>
+                    
+                  {%- endfor -%}
+                {% endif %}
+              </div>
+              
       </div>
       <div class="product__info-wrapper grid__item{% if settings.page_width > 1400 and section.settings.media_size == "small" %} product__info-wrapper--extra-padding{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
         <product-info
@@ -93,12 +111,21 @@
                 </p>
               {%- when 'title' -%}
                 <div class="product__title" {{ block.shopify_attributes }}>
-                  <h1>{{ product.title | escape }}</h1>
+                  <h1 class="main-product-title">{{ product.title | escape }}</h1>
                   <a href="{{ product.url }}" class="product__title">
                     <h2 class="h1">
                       {{ product.title | escape }}
                     </h2>
                   </a>
+                </div>
+                {% when 'product_ids' %}
+                <div class="product-ids" {{ block.shopify_attributes }}>
+                {%- if product.metafields.theme.product_model_number != blank -%}
+                  <div>Model: {{ product.metafields.theme.product_model_number }}</div>
+                {%- endif -%}
+                {%- if product.metafields.theme.product_hcpcs != blank -%}
+                  <div>HCPS: {{ product.metafields.theme.product_hcpcs }}</div>
+                {%- endif -%}
                 </div>
               {%- when 'price' -%}
                 <div id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
@@ -185,11 +212,29 @@
                   {%- endif -%}
                 </p>
               {%- when 'description' -%}
-                {%- if product.description != blank -%}
-                  <div class="product__description rte quick-add-hidden" {{ block.shopify_attributes }}>
-                    {{ product.description }}
-                  </div>
-                {%- endif -%}
+              {%- if product.description != blank -%}
+                <div class="product__description rte quick-add-hidden" {{ block.shopify_attributes }}>
+                  <h3 class="subtitle less-marg">{{ block.settings.subtitle }}</h3>
+                  {{ product.description }} 
+                </div>
+              {%- endif -%}
+              {%- when 'documentation' -%}
+              <h3 class="subtitle">{{ block.settings.subtitle }}</h3>
+              <div class="documentation-links" {{ block.shopify_attributes }}>
+                {%- if product.metafields.theme.primary_documentation != blank -%} <a href="{{ product.metafields.theme.primary_documentation | file_url }}" target="_blank" class="doc-row">
+                  {{ product.metafields.theme.product_model_number }} Instructions</br>
+                  <span>View PDF<span></a>
+                </a>
+                {%- endif -%} 
+                {%- if product.metafields.theme.secondary_documentation != blank -%} 
+                <a href="{{ product.metafields.theme.secondary_documentation | file_url }}" target="_blank" class="doc-row">
+                  {{ product.metafields.theme.product_model_number }} PDAC Letter</br>
+                  <span>View PDF<span></a>
+                </a>
+                {%- endif -%} 
+              </div>
+            
+              
               {%- when 'sku' -%}
                 <p
                   class="product__sku{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}{% if product.selected_or_first_available_variant.sku.size == 0 %} visibility-hidden{% endif %}"
@@ -797,6 +842,19 @@
       "limit": 1
     },
     {
+      "type": "variation_order_summary",
+      "name": "Variation Order Summary",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Variation Order Summary"
+        }
+      ]
+    },
+    {
       "type": "sku",
       "name": "t:sections.main-product.blocks.sku.name",
       "limit": 1,
@@ -939,7 +997,15 @@
     {
       "type": "description",
       "name": "t:sections.main-product.blocks.description.name",
-      "limit": 1
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle",
+          "default": "Product Description"
+        }
+      ]
     },
     {
       "type": "share",
@@ -2093,6 +2159,34 @@
           "default": "Heading",
           "label": "t:sections.main-product.blocks.icon_with_text.settings.heading_3.label",
           "info": "t:sections.main-product.blocks.icon_with_text.settings.heading.info"
+        }
+      ]
+    },
+    {
+      "type": "product_ids",
+      "name": "Product IDs"
+    },
+    {
+      "type": "documentation",
+      "name": "Documentation",
+      "settings": [
+        {
+          "type": "text",
+          "id": "subtitle", 
+          "default": "Documentation",
+          "label": "t:sections.main-product.blocks.text.settings.text.label"
+        }
+      ]
+    },
+    {
+      "type": "pricesheet",
+      "name": "Pricesheet",
+      "settings": [
+        {
+          "type": "text",
+          "id": "subtitle", 
+          "default": "Price Sheet",
+          "label": "t:sections.main-product.blocks.text.settings.text.label"
         }
       ]
     }

@@ -44,22 +44,26 @@
       "disabled": true,
       "settings": {
         "padding_top": 28,
-        "padding_bottom": 28
+        "padding_bottom": 28,
+        "button_text": "Click Here",
+        "button_link": ""
       }
     },
     "video_banner_xEMW3L": {
       "type": "video-banner",
       "settings": {
-        "heading": "BRACE TOURSELF. WE JUST LEVELED THE WHOLESALE PLAYING FIELD.",
+        "heading": "BRACE YOURSELF. WE JUST LEVELED THE WHOLESALE PLAYING FIELD.",
         "subheading": "",
-        "video_url": "https:\/\/ogkmediaserver.nyc3.cdn.digitaloceanspaces.com\/Video\/OGK%202022%20Reel.mp4"
+        "video_url": "https:\/\/ogkmediaserver.nyc3.cdn.digitaloceanspaces.com\/MBD\/MBDLoopCC1.mp4",
+        "link_url": "",
+        "link_title": "Learn More"
       }
     },
     "simple_text_section_PWdw7Y": {
       "type": "simple-text-section",
       "settings": {
         "title": "Supporting You Every Step Of The Way.",
-        "content": "<p>We understand the journey to recovery has many phases, including various stages of discomfort and rehabilitation. So we meticulously tailor our brace products to cater to every step of the pain and healing cycle. This ensures that your patients can receive the support they need — from injury, through rehab, and beyond.<\/p>",
+        "content": "<p>We understand recovery has many phases. That's why we carefully design our braces to support you through each stage of healing - from initial injury through rehabilitation and beyond. Whether you need a single brace or supplies for thousands of patients, our products deliver the targeted support needed for your recovery journey.<\/p>",
         "background_color": "#f5bb00",
         "text_color": "#00003c"
       }
@@ -88,7 +92,7 @@
         "button_hU7AbV"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/image_13_5.jpg",
+        "image": "shopify:\/\/shop_images\/Preferred_L3760_L3761_ElbowBrace_1.png",
         "height": "adapt",
         "desktop_image_width": "medium",
         "layout": "image_first",
@@ -109,7 +113,7 @@
         "column_QbYpGi": {
           "type": "column",
           "settings": {
-            "image": "shopify:\/\/shop_images\/ylw-circle.svg",
+            "image": "shopify:\/\/shop_images\/Ellipse_6.svg",
             "title": "Bulk Pricing",
             "text": "<p>We buy a lot, so you can save a lot too, no matter how much you buy. Of course we offer quantity discounts, but even if you just buy small amounts, you're still saving a bundle.<\/p>",
             "link_label": "",
@@ -119,7 +123,7 @@
         "column_BKrnqY": {
           "type": "column",
           "settings": {
-            "image": "shopify:\/\/shop_images\/ylw-circle.svg",
+            "image": "shopify:\/\/shop_images\/Ellipse_6.svg",
             "title": "No Minimums",
             "text": "<p>You don't have to buy a truckload to save — not from us. We buy in such large quantities, you save, regardless of your order size. So buy whatever quantity serves you best.<\/p>",
             "link_label": "",
@@ -129,9 +133,9 @@
         "column_m3XcKK": {
           "type": "column",
           "settings": {
-            "image": "shopify:\/\/shop_images\/ylw-circle.svg",
+            "image": "shopify:\/\/shop_images\/Ellipse_6.svg",
             "title": "Direct Shipping",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "text": "<p>Take advantage of our setup. Our distribution center is ideally located; we're positioned perfectly for direct shipments to you.<\/p>",
             "link_label": "",
             "link": ""
           }
@@ -167,7 +171,7 @@
         "description": "",
         "show_description": false,
         "description_style": "body",
-        "collection": "frontpage",
+        "collection": "best-sellers",
         "products_to_show": 3,
         "columns_desktop": 3,
         "full_width": false,
@@ -193,7 +197,7 @@
         "image_kcykC4": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/mbd_logo_white.svg"
+            "image": "shopify:\/\/shop_images\/mbd_logo_white_2.svg"
           }
         },
         "heading_3hbQQL": {
@@ -214,7 +218,7 @@
           "type": "buttons",
           "settings": {
             "button_label_1": "Shop Now",
-            "button_link_1": "",
+            "button_link_1": "\/collections\/all",
             "button_style_secondary_1": true,
             "button_label_2": "",
             "button_link_2": "",
@@ -229,7 +233,7 @@
         "buttons_rnqCkc"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/abstractbg.jpg",
+        "image": "shopify:\/\/shop_images\/abstractbg_1.jpg",
         "image_overlay_opacity": 40,
         "image_height": "large",
         "desktop_content_position": "middle-right",

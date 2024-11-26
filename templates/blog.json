@@ -1,9 +1,40 @@
 {
   "sections": {
+    "search_bar_7Dz6gN": {
+      "type": "search-bar",
+      "blocks": {
+        "link_AEANGz": {
+          "type": "link",
+          "settings": {
+            "link_title": "",
+            "link_url": ""
+          }
+        },
+        "link_rRjMnz": {
+          "type": "link",
+          "settings": {
+            "link_title": "",
+            "link_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "link_AEANGz",
+        "link_rRjMnz"
+      ],
+      "settings": {
+        "title": "Explore Educational Content In Collaboration With \/Our Community Of Healthcare Professionals.",
+        "search-button-text": "Search Blogs",
+        "description": "<p> <\/p>",
+        "subtitle": "",
+        "search_type": "article",
+        "placeholder_text": "Search by topic"
+      }
+    },
     "main": {
       "type": "main-blog",
       "settings": {
-        "layout": "collage",
+        "layout": "grid",
         "show_image": true,
         "image_height": "medium",
         "show_date": true,
@@ -14,6 +45,7 @@
     }
   },
   "order": [
+    "search_bar_7Dz6gN",
     "main"
   ]
 }

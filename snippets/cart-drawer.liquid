@@ -156,7 +156,7 @@
                             </div>
                           {%- else -%}
                             <div class="product-option">
-                              {{ item.original_price | money }}
+                              <span class="price-swap hidden">{{ item.original_price | money }}</span> &nbsp;
                             </div>
                           {%- endif -%}
 
@@ -219,7 +219,10 @@
                         </td>
 
                         <td class="cart-item__totals right" role="cell" headers="CartDrawer-ColumnTotal">
-                          {%- render 'loading-spinner' -%}
+                          {%- render 'loading-spinner', class: 'loading__spinner' -%} 
+                          
+
+
                           <div class="cart-item__price-wrapper">
                             {%- if item.original_line_price != item.final_line_price -%}
                               <div class="cart-item__discounted-prices">
@@ -487,10 +490,14 @@
             {%- endif -%}
           </div>
 
-          <div class="totals" role="status">
+          <div class="totals hidden" role="status"> 
             <h2 class="totals__total">{{ 'sections.cart.estimated_total' | t }}</h2>
-            <p class="totals__total-value">{{ cart.total_price | money_with_currency }}</p>
+            <p class="totals__total-value" style="position:relative;">{{ cart.total_price | money_with_currency }}</p>
+            
           </div>
+          <p class="loading__text">  
+              Calculating Totals... 
+          </p> 
 
           <small class="tax-note caption-large rte">
             {%- if cart.taxes_included and shop.shipping_policy.body != blank -%}

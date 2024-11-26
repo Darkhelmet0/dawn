@@ -10,9 +10,13 @@
   color: var(--color-brand-primary-contrast);
   font-size: 45px;
   font-style: italic;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 95%;
   letter-spacing: -1.35px;
+}
+
+.video-banner .subtitle {
+  color: #fff;
 }
 
 .video-banner h1 span {
@@ -49,7 +53,20 @@
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  padding: 0 20px;
+  padding-top: 90px;
   color: var(--color-primary-contrasting);
   text-align: left;
+}
+
+
+@media screen and (max-width: 768px) {
+  .video-banner {
+    height: auto;
+  }
+
+  .video-banner__content {
+    height: auto;
+    position: relative;
+  }
+
 }

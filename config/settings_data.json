@@ -1,6 +1,7 @@
 {
   "current": {
-    "logo": "shopify://shop_images/mbd_logo_white.svg",
+    "logo": "shopify:\/\/shop_images\/mbdlogopurp_4.svg",
+    "alt_logo": "shopify:\/\/shop_images\/mbd_logo_white_2.svg",
     "logo_width": 220,
     "type_header_font": "assistant_n4",
     "heading_scale": 100,
@@ -12,7 +13,7 @@
     "spacing_grid_vertical": 8,
     "buttons_border_thickness": 1,
     "buttons_border_opacity": 100,
-    "buttons_radius": 0,
+    "buttons_radius": 40,
     "buttons_shadow_opacity": 0,
     "buttons_shadow_horizontal_offset": 0,
     "buttons_shadow_vertical_offset": 4,
@@ -26,7 +27,7 @@
     "variant_pills_shadow_blur": 5,
     "inputs_border_thickness": 1,
     "inputs_border_opacity": 55,
-    "inputs_radius": 0,
+    "inputs_radius": 40,
     "inputs_shadow_opacity": 0,
     "inputs_shadow_horizontal_offset": 0,
     "inputs_shadow_vertical_offset": 4,
@@ -37,7 +38,7 @@
     "card_color_scheme": "scheme-2",
     "card_border_thickness": 0,
     "card_border_opacity": 10,
-    "card_corner_radius": 0,
+    "card_corner_radius": 10,
     "card_shadow_opacity": 0,
     "card_shadow_horizontal_offset": 0,
     "card_shadow_vertical_offset": 4,
@@ -48,7 +49,7 @@
     "collection_card_color_scheme": "scheme-2",
     "collection_card_border_thickness": 0,
     "collection_card_border_opacity": 10,
-    "collection_card_corner_radius": 0,
+    "collection_card_corner_radius": 10,
     "collection_card_shadow_opacity": 0,
     "collection_card_shadow_horizontal_offset": 0,
     "collection_card_shadow_vertical_offset": 4,
@@ -112,6 +113,7 @@
     "show_vendor": false,
     "show_cart_note": false,
     "cart_drawer_collection": "",
+    "logo_alt": "shopify:\/\/shop_images\/mbd_logo_white.svg",
     "sections": {
       "main-password-header": {
         "type": "main-password-header",
@@ -126,9 +128,14 @@
         }
       }
     },
-    "content_for_index": [
-
-    ],
+    "content_for_index": [],
+    "blocks": {
+      "17282384578088071192": {
+        "type": "shopify:\/\/apps\/pricebazi-volume-tiered-price\/blocks\/main\/f9fdf687-a1a9-4ff1-b989-48b63808bddc",
+        "disabled": false,
+        "settings": {}
+      }
+    },
     "color_schemes": {
       "scheme-1": {
         "settings": {
@@ -145,7 +152,7 @@
         "settings": {
           "background": "rgba(0,0,0,0)",
           "background_gradient": "",
-          "text": "{{ shop.brand.colors.primary[0].foreground }}",
+          "text": "{{ shop.brand.colors.secondary[0].foreground }}",
           "button": "{{ shop.brand.colors.primary[0].background }}",
           "button_label": "{{ shop.brand.colors.primary[0].foreground }}",
           "secondary_button_label": "{{ shop.brand.colors.primary[0].background }}",
@@ -165,11 +172,11 @@
       },
       "scheme-4": {
         "settings": {
-          "background": "#121212",
+          "background": "{{ shop.brand.colors.secondary[0].background }}",
           "background_gradient": "",
-          "text": "#ffffff",
+          "text": "{{ shop.brand.colors.secondary[0].foreground }}",
           "button": "#ffffff",
-          "button_label": "#121212",
+          "button_label": "{{ shop.brand.colors.secondary[0].foreground }}",
           "secondary_button_label": "#ffffff",
           "shadow": "#121212"
         }

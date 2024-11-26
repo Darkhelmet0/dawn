@@ -1,0 +1,60 @@
+<div class="page-width">
+  <div class="link-list-container">  
+    {% for block in section.blocks %}
+      <div class="link-list-wrapper">
+        {% if block.settings.title != blank %}
+          <h3 class="link-list-title">{{ block.settings.title }}</h2>
+        {% endif %}
+
+        {% if block.settings.link_list != blank %}
+          <ul class="link-list list-unstyled">
+            {% for link in linklists[block.settings.link_list].links %}
+              <li class="link-list-item">
+                <a href="{{ link.url }}">{{ link.title }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Link Lists",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "link_list",
+      "name": "Link List",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "link_list",
+          "id": "link_list",
+          "label": "Link List"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Link Lists",
+      "category": "Navigation",
+      "blocks": [
+        {
+          "type": "link_list"
+        },
+        {
+          "type": "link_list"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,114 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28,
+        "button_text": "Click Here",
+        "button_link": ""
+      }
+    },
+    "search_bar_3yCgXG": {
+      "type": "search-bar",
+      "blocks": {
+        "link_BQMxQj": {
+          "type": "link",
+          "settings": {
+            "link_title": "Return Policy",
+            "link_url": "\/returns"
+          }
+        },
+        "link_gAMkJn": {
+          "type": "link",
+          "settings": {
+            "link_title": "Cancel Order",
+            "link_url": ""
+          }
+        },
+        "link_3EgnAn": {
+          "type": "link",
+          "settings": {
+            "link_title": "Order Status",
+            "link_url": "\/account\/orders"
+          }
+        },
+        "link_ceCRik": {
+          "type": "link",
+          "settings": {
+            "link_title": "Track Order",
+            "link_url": "\/account\/orders"
+          }
+        }
+      },
+      "block_order": [
+        "link_BQMxQj",
+        "link_gAMkJn",
+        "link_3EgnAn",
+        "link_ceCRik"
+      ],
+      "settings": {
+        "title": "Help Center",
+        "search-button-text": "Search Solutions",
+        "description": "<p> <\/p>",
+        "subtitle": "Popular searches",
+        "search_type": "page",
+        "placeholder_text": "How can we help?"
+      }
+    },
+    "multi_link_lists_W7m9h7": {
+      "type": "multi-link-lists",
+      "blocks": {
+        "link_list_zjw78a": {
+          "type": "link_list",
+          "settings": {
+            "title": "Account",
+            "link_list": "main-menu"
+          }
+        },
+        "link_list_bApUTw": {
+          "type": "link_list",
+          "settings": {
+            "title": "Product",
+            "link_list": "main-menu"
+          }
+        },
+        "link_list_JDWajc": {
+          "type": "link_list",
+          "settings": {
+            "title": "Learn",
+            "link_list": "main-menu"
+          }
+        },
+        "link_list_kwMKFd": {
+          "type": "link_list",
+          "settings": {
+            "title": "Contact",
+            "link_list": "main-menu"
+          }
+        },
+        "link_list_Dh9V6C": {
+          "type": "link_list",
+          "settings": {
+            "title": "Test",
+            "link_list": "main-menu"
+          }
+        }
+      },
+      "block_order": [
+        "link_list_zjw78a",
+        "link_list_bApUTw",
+        "link_list_JDWajc",
+        "link_list_kwMKFd",
+        "link_list_Dh9V6C"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "search_bar_3yCgXG",
+    "multi_link_lists_W7m9h7"
+  ]
+}

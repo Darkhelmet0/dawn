@@ -14,8 +14,8 @@
   }
 {%- endstyle -%}
 
-<div class="color-{{ section.settings.color_scheme }} gradient">
-  <div class="contact page-width page-width--narrow section-{{ section.id }}-padding">
+<div class="contact-section-wrap gradient" style="background-image: url({{ section.settings.background_image | img_url: 'master' }}); background-size: cover; background-position: center;">
+  <div class="contact contact-modal section-{{ section.id }}-padding">
     {%- if section.settings.heading != blank -%}
       <h2 class="title title-wrapper--no-top-margin inline-richtext {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
         {{ section.settings.heading }}
@@ -51,10 +51,11 @@
           </li>
         </ul>
       {%- endif -%}
-      <div class="contact__fields">
-        <div class="field">
+      <div class="contact__fields_mbd">
+        <div class="field_mbd">
+          <label class="field__label_mbd" for="ContactForm-name">{{ 'templates.contact.form.name' | t }}</label>
           <input
-            class="field__input"
+            class="field__input_mbd"
             autocomplete="name"
             type="text"
             id="ContactForm-name"
@@ -62,14 +63,16 @@
             value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
             placeholder="{{ 'templates.contact.form.name' | t }}"
           >
-          <label class="field__label" for="ContactForm-name">{{ 'templates.contact.form.name' | t }}</label>
         </div>
-        <div class="field field--with-error">
+        <div class="field_mbd field--with-error_mbd">
+        <label class="field__label_mbd" for="ContactForm-email">
+            {{- 'templates.contact.form.email' | t }}
+            <span aria-hidden="true">*</span></label>
           <input
             autocomplete="email"
             type="email"
             id="ContactForm-email"
-            class="field__input"
+            class="field__input_mbd"
             name="contact[email]"
             spellcheck="false"
             autocapitalize="off"
@@ -81,10 +84,7 @@
             {% endif %}
             placeholder="{{ 'templates.contact.form.email' | t }}"
           >
-          <label class="field__label" for="ContactForm-email">
-            {{- 'templates.contact.form.email' | t }}
-            <span aria-hidden="true">*</span></label
-          >
+          
           {%- if form.errors contains 'email' -%}
             <small class="contact__field-error" id="ContactForm-email-error">
               <span class="visually-hidden">{{ 'accessibility.error' | t }}</span>
@@ -97,35 +97,40 @@
           {%- endif -%}
         </div>
       </div>
-      <div class="field">
-        <input
-          type="tel"
-          id="ContactForm-phone"
-          class="field__input"
-          autocomplete="tel"
-          name="contact[{{ 'templates.contact.form.phone' | t }}]"
-          pattern="[0-9\-]*"
-          value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
-          placeholder="{{ 'templates.contact.form.phone' | t }}"
-        >
-        <label class="field__label" for="ContactForm-phone">{{ 'templates.contact.form.phone' | t }}</label>
+      <div class="field_mbd">
+        <label class="field__label_mbd" for="ContactForm-need">I need</label>
+        <div class="radio-group">
+          <div class="radio-option">
+            <input type="radio" id="ContactForm-need-support" name="contact[need]" value="Customer Support">
+            <label for="ContactForm-need-support">Customer Support</label>
+          </div>
+          <div class="radio-option">
+            <input type="radio" id="ContactForm-need-technical" name="contact[need]" value="Technical Support">
+            <label for="ContactForm-need-technical">Technical Support</label>
+          </div>
+          <div class="radio-option">
+            <input type="radio" id="ContactForm-need-samples" name="contact[need]" value="Request Samples">
+            <label for="ContactForm-need-samples">Request Samples</label>
+          </div>
+          <div class="radio-option">
+            <input type="radio" id="ContactForm-need-other" name="contact[need]" value="Other">
+            <label for="ContactForm-need-other">Other</label>
+          </div>
+        </div>
       </div>
-      <div class="field">
-        <textarea
-          rows="10"
+      <div class="field_mbd">
+      <label class="field__label_mbd" for="ContactForm-body">
+          {{- 'templates.contact.form.comment' | t -}}
+        </label>
+        <input type="text"
           id="ContactForm-body"
-          class="text-area field__input"
+          class="field__input_mbd"
           name="contact[{{ 'templates.contact.form.comment' | t }}]"
           placeholder="{{ 'templates.contact.form.comment' | t }}"
         >
-          {{- form.body -}}
-        </textarea>
-        <label class="form__label field__label" for="ContactForm-body">
-          {{- 'templates.contact.form.comment' | t -}}
-        </label>
       </div>
       <div class="contact__button">
-        <button type="submit" class="button">
+        <button type="submit" class="button button--secondary">
           {{ 'templates.contact.form.send' | t }}
         </button>
       </div>
@@ -167,6 +172,11 @@
       ],
       "default": "h1",
       "label": "t:sections.all.heading_size.label"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image"
     },
     {
       "type": "color_scheme",

@@ -1,0 +1,140 @@
+<div class="testimonial-slider-section section-padding bg-brand-grad">
+  <div class="page-width section-padding">
+    <div class="testimonial-slider-head">
+      <h2 class="tc-purp banner__heading">{{ section.settings.title }}</h2>
+      <p class="subtitle">{{ section.settings.subtitle }}</p>
+      <a href="{{ section.settings.button_link }}" alt="{{ section.settings.button_text }}" class="button button--secondary">
+        {{ section.settings.button_text }}
+      </a>
+    </div>
+  </div>
+  
+    <div class="testimonial-slider-wrap">
+      <div class="testimonial-slider">
+        {% for block in section.blocks %} 
+          <div class="testimonial-card-wrap">
+            <div class="testimonial-card">
+              <div class="testimonial-card__image">
+  {% if block.settings.image %}
+    {% assign image = block.settings.image %}
+    {% assign aspect_ratio = image.aspect_ratio %}
+    <div class="image-container" style="padding-top: {{ 1 | divided_by: aspect_ratio | times: 100 }}%;">
+      <img
+        src="{{ image | img_url: 'master' }}"
+        alt="{{ image.alt | escape }}"
+        width="{{ image.width }}"
+        height="{{ image.height }}"
+        loading="lazy"
+        decoding="async"
+      >
+    </div>
+  {% else %}
+    {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+  {% endif %}
+</div>
+
+
+              <div class="testimonial-card__body">
+                <div class="testimonial-card__content">
+                    {{ block.settings.content }}
+                </div>
+                <div class="testimonial-card__author">
+                    <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle id="Ellipse 9" cx="8" cy="8.5" r="8" fill="#7460DE"/>
+                    </svg>
+                    <p>{{ block.settings.author }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var testimonialSlider = document.querySelector('.testimonial-slider');
+    if (testimonialSlider) {
+      new Flickity(testimonialSlider, {
+        cellAlign: 'left',
+        contain: false,
+        pageDots: false,
+        prevNextButtons: false,
+        wrapAround: true,
+        autoPlay: true,
+        imagesLoaded: true,
+        freeScroll: true,
+        draggable: true,
+      });
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Testimonial Slider",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Testimonials"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Section subtitle",
+      "default": "Testimonials from real patients"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "View All"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content"
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Author"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonial Slider",
+      "blocks": [
+        {
+          "type": "testimonial"
+        },
+        {
+          "type": "testimonial"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

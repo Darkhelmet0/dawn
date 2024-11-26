@@ -99,7 +99,7 @@ body:has(.section-header .drawer-menu) .announcement-bar-section .page-width {
 
 @media screen and (min-width: 750px) {
   .page-width {
-    padding: 0 5rem;
+    padding: 0 3.2rem;
   }
 
   .header.page-width,
@@ -134,7 +134,7 @@ body:has(.section-header .drawer-menu) .announcement-bar-section .page-width {
 
   .page-width-desktop {
     max-width: var(--page-width);
-    padding: 0 5rem;
+    padding: 0 3.2rem;
   }
 }
 
@@ -261,8 +261,8 @@ h5,
   letter-spacing: calc(var(--font-heading-scale) * 0.06rem);
   color: rgb(var(--color-foreground));
   line-height: calc(1 + 0.3 / max(1, var(--font-heading-scale)));
-  word-break: break-word;
-  font-variation-settings: "wght" 700;
+  /* word-break: break-word; */
+  font-variation-settings: "wght" 500;
 }
 
 .hxl {
@@ -307,7 +307,8 @@ h2,
 
   h2,
   .h2 {
-    font-size: calc(var(--font-heading-scale) * 2.4rem);
+    font-size: 32px;
+    letter-spacing: -.64px;
   }
 }
 
@@ -841,7 +842,7 @@ summary::-webkit-details-marker {
   font-size: 1.8rem;
   line-height: calc(1 + 0.8 / var(--font-body-scale));
   letter-spacing: 0.06rem;
-  color: rgba(var(--color-foreground), 0.7);
+  color: rgba(var(--color-foreground));
 }
 
 .subtitle--small {
@@ -1856,6 +1857,7 @@ input[type='checkbox'] {
   display: flex;
   border-radius: var(--inputs-radius);
   min-height: calc((var(--inputs-border-width) * 2) + 4.5rem);
+  width: 100%;
 }
 
 .quantity:after {
@@ -2062,6 +2064,7 @@ product-info .loading__spinner:not(.hidden)~*,
   left: 2.2rem;
   line-height: calc(1 + 0.1 / var(--font-body-scale));
 }
+
 
 /* utility-bar */
 .utility-bar {
@@ -2359,10 +2362,14 @@ product-info .loading__spinner:not(.hidden)~*,
     column-gap: 1rem;
   }
 
+  .header__icon--account {
+    margin-right: 1rem;
+  }
+
   .header--middle-left {
     grid-template-areas: 'heading navigation icons';
     grid-template-columns: 1fr auto auto;
-    column-gap: 2rem;
+    column-gap: 0rem;
   }
 
   .header--middle-center:not(.drawer-menu) {

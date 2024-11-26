@@ -77,7 +77,11 @@
     }
   }
 </style>
-
+<script>
+  if (window.location.search.includes('?type=product&q=') || window.location.search.includes('?q=&type=product')) {
+    window.location.href = '/collections/all';
+  }
+</script>
 {%- style -%}
   .header {
     padding: {{ section.settings.padding_top | times: 0.5 | round: 0 }}px 3rem {{ section.settings.padding_bottom | times: 0.5 | round: 0 }}px 3rem;
@@ -134,7 +138,7 @@
   endfor
 -%}
 
-<{% if section.settings.sticky_header_type != 'none' %}sticky-header data-sticky-type="{{ section.settings.sticky_header_type }}"{% else %}div{% endif %} class="header-wrapper color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_line_separator %} header-wrapper--border-bottom{% endif %} {% if section.settings.invisible_header %} invisible_header {% endif %}">
+<{% if section.settings.sticky_header_type != 'none' %}sticky-header data-sticky-type="{{ section.settings.sticky_header_type }}"{% else %}div{% endif %} class="header-wrapper color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_line_separator %} header-wrapper--border-bottom{% endif %} {%- if request.page_type == 'index' -%} invisible_header {% endif %} {%- if page.metafields.theme.use_alt_header -%} invisible_header {% endif %} {%- if product.metafields.theme.use_alt_header -%} invisible_header {% endif %} ">
   {%- liquid
     assign social_links = false
     assign localization_forms = false
@@ -169,18 +173,28 @@
                 {%- assign logo_height = settings.logo_width | divided_by: settings.logo.aspect_ratio -%}
                 {% capture sizes %}(max-width: {{ settings.logo_width | times: 2 }}px) 50vw, {{ settings.logo_width }}px{% endcapture %}
                 {% capture widths %}{{ settings.logo_width }}, {{ settings.logo_width | times: 1.5 | round }}, {{ settings.logo_width | times: 2 }}{% endcapture %}
-                {{ settings.logo | image_url: width: 600 | image_tag:
-                  class: 'header__heading-logo motion-reduce',
-                  widths: widths,
-                  height: logo_height,
-                  width: settings.logo_width,
-                  alt: logo_alt,
-                  sizes: sizes,
-                  preload: true
-                }}
-              </div>
-            {%- else -%}
-              <span class="h2">{{ shop.name }}</span>
+                {%- if request.page_type == 'index' or page.metafields.theme.use_alt_header or product.metafields.theme.use_alt_header -%}
+                  {{ settings.alt_logo | image_url: width: 600 | image_tag:
+                    class: 'header__heading-logo motion-reduce',
+                    widths: widths,
+                    height: logo_height,
+                    width: settings.logo_width,
+                    alt: logo_alt,
+                    sizes: sizes,
+                    preload: true
+                  }}
+                  {%- else -%}
+                    {{ settings.logo | image_url: width: 600 | image_tag:
+                    class: 'header__heading-logo motion-reduce',
+                    widths: widths,
+                    height: logo_height,
+                    width: settings.logo_width,
+                    alt: logo_alt,
+                    sizes: sizes,
+                    preload: true
+                  }}
+                {%- endif -%}
+                </div>
             {%- endif -%}
           </a>
       {%- if request.page_type == 'index' -%}
@@ -248,11 +262,11 @@
                 <h2 class="visually-hidden" id="HeaderLanguageLabel">{{ 'localization.language_label' | t }}</h2>
                 {%- render 'language-localization', localPosition: 'HeaderLanguage' -%}
               </div>
-            {%- endform -%}
+            {%- endform -%} 
           </localization-form>
         {%- endif -%}
       </div>
-      {% render 'header-search', input_id: 'Search-In-Modal' %}
+      
 
       {%- if shop.customer_accounts_enabled -%}
         <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" class="header__icon header__icon--account link focus-inset{% if section.settings.menu != blank %} small-hide{% endif %}">
@@ -282,23 +296,14 @@
         {%- endcase -%}
       {%- endfor -%}
 
-      <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
-        {%- liquid
-          if cart == empty
-            render 'icon-cart-empty'
-          else
-            render 'icon-cart'
-          endif
-        -%}
+      <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble"> 
+       
+          Cart <span aria-hidden="true" >&nbsp;({{ cart.item_count }})</span>
+            
+        
         <span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
-        {%- if cart != empty -%}
-          <div class="cart-count-bubble">
-            {%- if cart.item_count < 100 -%}
-              <span aria-hidden="true">{{ cart.item_count }}</span>
-            {%- endif -%}
-            <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
-          </div>
-        {%- endif -%}
+        
+        
       </a>
     </div>
   </header>
@@ -458,6 +463,8 @@
       "url": {{ request.origin | append: page.url | json }}
     }
   </script>
+
+ 
 {%- endif -%}
 
 {% schema %}
@@ -466,13 +473,7 @@
   "class": "section-header",
   "max_blocks": 3,
   "settings": [
-    {
-      "type": "checkbox",
-      "id": "invisible_header",
-      "label": "Invisible Header",
-      "default": false,
-      "info": "Check to make the header invisible"
-    },
+    
     {
       "type": "select",
       "id": "logo_position",

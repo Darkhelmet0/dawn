@@ -39,15 +39,13 @@
   {% endif %}
 
   {% unless section.settings.enable_carousel %}
-    <div class="video-banner__content-container">
-      <div class="video-banner__content">
-        <div class="content-wrapper">
-          <h1 class='txt-wht'>{{ section.settings.heading }}</h1>
-          <p class="subtitle txt-wht">{{ section.settings.subheading }}</p>
-          {% if section.settings.link_url != blank %}
-            <a href="{{ section.settings.link_url }}" class="button button--seccondary btn-wht">{{ section.settings.link_title }}</a>
-          {% endif %}
-        </div>
+    <div class="video-banner__content page-width">
+      <div class="max-width-700">
+        <h1 class='txt-wht'>{{ section.settings.heading }}</h1>
+        <p class="subtitle txt-wht">{{ section.settings.subheading }}</p>
+        {% if section.settings.link_url != blank %}
+          <a href="{{ section.settings.link_url }}" class="button button--seccondary btn-wht">{{ section.settings.link_title }}</a>
+        {% endif %}
       </div>
     </div>
   {% endunless %}

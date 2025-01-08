@@ -44,8 +44,8 @@
                 Sizing Information
             {%- endif -%}
             </h3>
-            <div class="size-info-wrap">
-            
+            <div class="size-info-wrap" style="position:relative;">
+                <span id="size-chart" style="position:absolute;top:-90px;opacity:0;pointer-events:none;"></span>
             {{ product.metafields.theme.product_size_info | metafield_tag }}
             
             {%- if product.metafields.theme.sizing_chart != blank -%}

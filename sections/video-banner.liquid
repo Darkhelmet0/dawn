@@ -15,15 +15,13 @@
                 sizes: '100vw'
               }}
             {%- endif -%}
-            <div class="video-banner__content-container">
-              <div class="video-banner__content">
-                <div class="content-wrapper">
+            <div class="video-banner__content page-width">
+              <div class="content-container">
                   <h1 class='txt-wht'>{{ block.settings.heading }}</h1>
                   <p class="subtitle txt-wht">{{ block.settings.subheading }}</p>
                   {% if block.settings.link_url != blank %}
                     <a href="{{ block.settings.link_url }}" class="button button--seccondary btn-wht">{{ block.settings.link_title }}</a>
                   {% endif %}
-                </div>
               </div>
             </div>
           </div>
@@ -112,7 +110,7 @@
         {
           "type": "text",
           "id": "heading",
-          "label": "Heading",
+          "label": "Heading", 
           "default": "Slide Heading"
         },
         {

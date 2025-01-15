@@ -4,7 +4,7 @@
 
 <div class="video-banner">
   {% if section.settings.enable_carousel %}
-    <div class="video-banner__carousel banner-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "prevNextButtons": true, "pageDots": true, "autoPlay": true, "wrapAround": true }'>
+    <div class="video-banner__carousel banner-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "prevNextButtons": false, "pageDots": true, "autoPlay": true, "wrapAround": true }'>
       {% for block in section.blocks %}
         {% if block.type == 'slide_image' %}
           <div class="carousel-cell">
@@ -158,7 +158,7 @@ class BannerCarousel {
       const flkty = new Flickity(carousel, {
         cellAlign: 'left',
         contain: true,
-        prevNextButtons: true,
+        prevNextButtons: false,
         pageDots: true,
         autoPlay: 5000,
         wrapAround: true,

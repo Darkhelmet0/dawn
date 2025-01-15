@@ -51,7 +51,45 @@
     },
     "video_banner_xEMW3L": {
       "type": "video-banner",
+      "blocks": {
+        "slide_image_RHjhk3": {
+          "type": "slide_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/MBD_Hero_Banner_About_Us_1_1.png",
+            "heading": "SUPERIOR SUPPORT AND <br>FLEX FLEXIBILITY FOR LESS",
+            "subheading": "",
+            "link_url": "",
+            "link_title": "Learn More"
+          }
+        },
+        "slide_image_rCQ79F": {
+          "type": "slide_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/MBD_Hero_Banner_About_Us_2_1.png",
+            "heading": "BRACES FOR EVERY BODY: <br>HIGH-QUALITY, WHOLESALE<br> PRICES FOR ALL.",
+            "subheading": "",
+            "link_url": "",
+            "link_title": "Learn More"
+          }
+        },
+        "slide_image_UbPzi9": {
+          "type": "slide_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/MBD_Hero_Banner_About_Us_3_1.png",
+            "heading": "BRACE YOURSELF. <br>WE JUST LEVELED THE<br>\u2028PLAYING FIELD.",
+            "subheading": "",
+            "link_url": "",
+            "link_title": "Learn More"
+          }
+        }
+      },
+      "block_order": [
+        "slide_image_RHjhk3",
+        "slide_image_rCQ79F",
+        "slide_image_UbPzi9"
+      ],
       "settings": {
+        "enable_carousel": true,
         "heading": "BRACE YOURSELF. WE JUST LEVELED THE WHOLESALE PLAYING FIELD.",
         "subheading": "",
         "video_url": "https:\/\/ogkmediaserver.nyc3.cdn.digitaloceanspaces.com\/MBD\/MBDLoopCC1.mp4",

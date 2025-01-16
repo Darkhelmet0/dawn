@@ -2,8 +2,25 @@
   "sections": {
     "video_banner_EyKGcT": {
       "type": "video-banner",
+      "blocks": {
+        "slide_image_Dc8FUU": {
+          "type": "slide_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/MBD_Homepage_Banner_Image_1.png",
+            "heading": "<span>TOP-TIER MEDICAL BRACES AND<br> SUPPORTS<\/span> AT DIRECT-TO-YOU<br> UNMATCHED PRICES.",
+            "subheading": "Supporting you, every step of the way.",
+            "link_url": "shopify:\/\/collections\/knee-braces",
+            "link_title": "Shop Knee Braces"
+          }
+        }
+      },
+      "block_order": [
+        "slide_image_Dc8FUU"
+      ],
       "settings": {
-        "heading": "<span>TOP-TIER MEDICAL BRACES AND SUPPORTS<\/span> AT DIRECT-TO-YOU WHOLESALE PRICES",
+        "enable_carousel": true,
+        "enable_overlay": false,
+        "heading": "TOP-TIER MEDICAL BRACES AND SUPPORTS AT DIRECT-TO-YOU WHOLESALE PRICES",
         "subheading": "Supporting you, every step of the way.",
         "video_url": "https:\/\/ogkmediaserver.nyc3.cdn.digitaloceanspaces.com\/MBD\/MBDLoopCC1.mp4",
         "link_url": "",

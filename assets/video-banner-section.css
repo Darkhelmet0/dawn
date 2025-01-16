@@ -5,7 +5,7 @@
   max-height: 510px;
   min-height: 390px;
   overflow: hidden;
-  background-color: var(--color-background);
+  background-color: #1c0038;
 }
 
 /* Video Mode Styles */
@@ -78,9 +78,10 @@
 }
 
 .carousel-cell {
-  width: 100%;
+  width: 100vw;
   height: 100%;
   position: relative;
+  overflow: hidden;
 }
 
 .carousel-cell::after {
@@ -182,6 +183,16 @@
     align-items: center;
   }
 
+  .overlay-enabled .video-banner__content.page-width {
+    align-items: flex-start;
+  }
+
+  .overlay-enabled .carousel-cell .content-container:before {
+    /* right: 0 !important; 
+    you are here
+    */
+  }
+
   .video-banner__content-container {
     position: absolute;
   }
@@ -203,4 +214,42 @@
   .flickity-page-dots {
     bottom: 10px;
   }
+}
+
+.overlay-enabled .carousel-cell img {
+  position: absolute;
+  width: auto;
+  right: 0;
+}
+
+.overlay-enabled .carousel-cell .content-container {
+  position: relative;
+  height: 100%;
+  padding-top: 90px;
+  padding-bottom: 40px;
+  padding-left: 3.2rem;
+  max-width: 710px;
+}
+
+.overlay-enabled .carousel-cell .content-container:before {
+  position: absolute;
+  right: -75px;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  content: "";
+  background-image: url('../assets/MBD_Homepage_Purple_BackgroundOnly.svg');
+  background-position: right;
+  z-index: -1;
+  background-size: cover;
+}
+
+.overlay-enabled .video-banner__content.page-width {
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+}
+
+.overlay-enabled .carousel-cell:after {
+  background: none;
 }

@@ -4,7 +4,7 @@
 
 <div class="video-banner">
   {% if section.settings.enable_carousel %}
-    <div class="video-banner__carousel banner-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "prevNextButtons": false, "pageDots": true, "autoPlay": true, "wrapAround": true }'>
+    <div class="video-banner__carousel banner-carousel {% if section.settings.enable_overlay %}overlay-enabled{% endif %}" data-flickity='{ "cellAlign": "left", "contain": true, "prevNextButtons": false, "pageDots": true, "autoPlay": true, "wrapAround": true }'>
       {% for block in section.blocks %}
         {% if block.type == 'slide_image' %}
           <div class="carousel-cell">
@@ -60,6 +60,13 @@
       "label": "Enable Image Carousel",
       "default": false,
       "info": "Switch between video and image carousel"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_overlay",
+      "label": "Enable Overlay",
+      "default": false,
+      "info": "Add overlay effect to carousel slides"
     },
     {
       "type": "text",

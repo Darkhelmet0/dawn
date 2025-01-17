@@ -146,7 +146,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   endfor
 -%}
 
-<{% if section.settings.sticky_header_type != 'none' %}sticky-header data-sticky-type="{{ section.settings.sticky_header_type }}"{% else %}div{% endif %} class="header-wrapper color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_line_separator %} header-wrapper--border-bottom{% endif %} {%- if request.page_type == 'index' -%} invisible_header {% endif %} {%- if page.metafields.theme.use_alt_header -%} invisible_header {% endif %} {%- if product.metafields.theme.use_alt_header -%} invisible_header {% endif %} ">
+<{% if section.settings.sticky_header_type != 'none' %}sticky-header data-sticky-type="{{ section.settings.sticky_header_type }}"{% else %}div{% endif %} class="header-wrapper color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_line_separator %} header-wrapper--border-bottom{% endif %} {%- if page.metafields.theme.use_alt_header -%} invisible_header {% endif %} {%- if product.metafields.theme.use_alt_header -%} invisible_header {% endif %} ">
   {%- liquid
     assign social_links = false
     assign localization_forms = false
@@ -181,7 +181,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 {%- assign logo_height = settings.logo_width | divided_by: settings.logo.aspect_ratio -%}
                 {% capture sizes %}(max-width: {{ settings.logo_width | times: 2 }}px) 50vw, {{ settings.logo_width }}px{% endcapture %}
                 {% capture widths %}{{ settings.logo_width }}, {{ settings.logo_width | times: 1.5 | round }}, {{ settings.logo_width | times: 2 }}{% endcapture %}
-                {%- if request.page_type == 'index' or page.metafields.theme.use_alt_header or product.metafields.theme.use_alt_header -%}
+                {%- if page.metafields.theme.use_alt_header or product.metafields.theme.use_alt_header -%}
                   {{ settings.alt_logo | image_url: width: 600 | image_tag:
                     class: 'header__heading-logo motion-reduce',
                     widths: widths,

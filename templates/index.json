@@ -7,19 +7,41 @@
           "type": "slide_image",
           "settings": {
             "image": "shopify:\/\/shop_images\/MBD_Homepage_Banner_Image_1.png",
-            "heading": "<span>TOP-TIER MEDICAL BRACES AND<br> SUPPORTS<\/span> AT DIRECT-TO-YOU<br> UNMATCHED PRICES.",
+            "heading": "<span>TOP-TIER MEDICAL BRACES AND SUPPORTS<\/span> AT DIRECT-TO-YOU UNMATCHED PRICES.",
             "subheading": "Supporting you, every step of the way.",
             "link_url": "shopify:\/\/collections\/knee-braces",
             "link_title": "Shop Knee Braces"
           }
+        },
+        "slide_image_NjYJhn": {
+          "type": "slide_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/MBD_Homepage_Banner_Image_3.png",
+            "heading": "<span>TOP-TIER MEDICAL BRACES AND SUPPORTS<\/span> AT DIRECT-TO-YOU UNMATCHED PRICES.",
+            "subheading": "Slide subheading text",
+            "link_url": "",
+            "link_title": "Learn More"
+          }
+        },
+        "slide_image_8tM98N": {
+          "type": "slide_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/MBD_Homepage_Banner_Image_2.png",
+            "heading": "<span>TOP-TIER MEDICAL BRACES AND SUPPORTS<\/span> AT DIRECT-TO-YOU UNMATCHED PRICES.",
+            "subheading": "Supporting you, every step of the way.",
+            "link_url": "shopify:\/\/collections",
+            "link_title": "Learn More"
+          }
         }
       },
       "block_order": [
-        "slide_image_Dc8FUU"
+        "slide_image_Dc8FUU",
+        "slide_image_NjYJhn",
+        "slide_image_8tM98N"
       ],
       "settings": {
         "enable_carousel": true,
-        "enable_overlay": false,
+        "enable_overlay": true,
         "heading": "TOP-TIER MEDICAL BRACES AND SUPPORTS AT DIRECT-TO-YOU WHOLESALE PRICES",
         "subheading": "Supporting you, every step of the way.",
         "video_url": "https:\/\/ogkmediaserver.nyc3.cdn.digitaloceanspaces.com\/MBD\/MBDLoopCC1.mp4",

@@ -220,6 +220,7 @@
   position: absolute;
   width: auto;
   right: 0;
+  transition: .3s ease-in-out all;
 }
 
 .overlay-enabled .carousel-cell .content-container {
@@ -252,4 +253,28 @@
 
 .overlay-enabled .carousel-cell:after {
   background: none;
+}
+
+
+@media screen and (max-width: 1268px) {
+  .overlay-enabled .carousel-cell img {
+    right: -25%;
+  }
+}
+
+@media screen and (max-width: 968px) {
+  .overlay-enabled .carousel-cell img {
+    right: -50%;
+  }
+}
+
+@media screen and (max-width: 583px) {
+  .overlay-enabled .carousel-cell .content-container:before {
+    background-color: #1c0038;
+  }
+
+  .overlay-enabled .carousel-cell .content-container {
+    max-width: 100%;
+    padding-top: 40px;
+  }
 }

@@ -399,6 +399,7 @@ function updateQuantities() {
         const cells = document.querySelectorAll('.variant-price-table td');
         cells.forEach(cell => {
           const variantId = cell.dataset.variantId;
+          console.log("VARIANT ID " + cell.dataset.variantId)
           cell.setAttribute('data-cartquantity', variantQuantities[variantId] || 0);
         });
 

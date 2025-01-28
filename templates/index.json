@@ -18,9 +18,9 @@
           "settings": {
             "image": "shopify:\/\/shop_images\/MBD_Homepage_Banner_Image_3.png",
             "heading": "<span>TOP-TIER MEDICAL BRACES AND SUPPORTS<\/span> AT DIRECT-TO-YOU UNMATCHED PRICES.",
-            "subheading": "Slide subheading text",
-            "link_url": "",
-            "link_title": "Learn More"
+            "subheading": "Supporting you, every step of the way.",
+            "link_url": "shopify:\/\/collections\/lumbar-braces",
+            "link_title": "Shop Lumbar Braces"
           }
         },
         "slide_image_8tM98N": {
@@ -29,8 +29,8 @@
             "image": "shopify:\/\/shop_images\/MBD_Homepage_Banner_Image_2.png",
             "heading": "<span>TOP-TIER MEDICAL BRACES AND SUPPORTS<\/span> AT DIRECT-TO-YOU UNMATCHED PRICES.",
             "subheading": "Supporting you, every step of the way.",
-            "link_url": "shopify:\/\/collections",
-            "link_title": "Learn More"
+            "link_url": "shopify:\/\/collections\/lumbar-braces",
+            "link_title": "Shop Lumbar Braces"
           }
         }
       },

@@ -27,7 +27,7 @@
       assign sides = product.options_by_name['Side'].values | default: empty
     -%}
 
-    <product-form class="product-form" data-hide-errors="{{ gift_card_recipient_feature_active }}" data-section-id="{{ section.id }}">
+    <product-form class="product-form" data-hide-errors="{{ gift_card_recipient_feature_active }}" data-section-id="{{ section.id }}" data-testsides="{{sides.size}}" data-testsize="{{sizes.size}}">
       <div class="product-form__error-message-wrapper" role="alert" hidden>
         <svg
           aria-hidden="true"
@@ -53,75 +53,122 @@
         {%- if gift_card_recipient_feature_active -%}
           {%- render 'gift-card-recipient-form', product: product, form: form, section: section -%}
         {%- endif -%}
-{%- if sizes.size > 0 and sides.size > 0 -%}
+
         <div class="product-form__variants">
-          <table class="variant-table">
-            <thead>
-              <tr>
-                <th>Side</th>
-                <th>Size <a href="#size-chart" style="font-size:.8em; color:#1c0038;">(Details)</a></th>
-              </tr>
-            </thead>
-            <tbody>
-              {% for side in sides %}
+          {%- if sizes.size > 0 and sides.size > 0 -%}
+            <table class="variant-table">
+              <thead>
                 <tr>
-                  <th><div class="th-label">{{ side }}</div></th>
-                  <td>
-                    <div class="size-inputs">
-                      {% for size in sizes %}
-                        {% assign variant = product.variants | where: "option1", size | where: "option2", side | first %}
-                        <div class="size-input-group">
-                          <span class="size-label">{{ size }}</span>
-                          <button type="button" class="quantity-button minus">-</button>
-                          <input
-                            type="number"
-                            id="Quantity-{{ variant.id }}"
-                            name="items[{{ variant.id }}][quantity]"
-                            data-variant-id="{{ variant.id }}"
-                            value="0"
-                            min="0"
-                            class="product-form__quantity"
-                            {% unless variant.available %}disabled{% endunless %}
-                          >
-                          <button type="button" class="quantity-button plus">+</button>
-                        </div>
-                      {% endfor %}
-                    </div>
-                  </td>
+                  <th>Side</th>
+                  <th>Size <a href="#size-chart" style="font-size:.8em; color:#1c0038;">(Details)</a></th>
                 </tr>
-              {% endfor %}
-            </tbody>
-          </table>
-        </div>
-        
-         <h3 class="subtitle">Order Summary</h3>
-        {%- render 'variation-order-summary', product: product -%}
-
-        {%- else -%}
-
-        {% assign variant = product.selected_or_first_available_variant %}
-        <div class="size-inputs" style="margin-bottom: 1.5rem;">
-            <div class="size-input-group" style="max-width:120px;">
-              <span class="size-label">Qty.</span>
-              <button type="button" class="quantity-button minus">-</button>
-              <input
-                type="number"
-                id="Quantity-{{ variant.id }}"
-                name="items[{{ variant.id }}][quantity]"
-                data-variant-id="{{ variant.id }}"
-                value="0"
-                min="0"
-                class="product-form__quantity"
-                {% unless variant.available %}disabled{% endunless %}
-              >
-              <button type="button" class="quantity-button plus">+</button>
+              </thead>
+              <tbody>
+                {% for side in sides %}
+                  <tr>
+                    <th><div class="th-label">{{ side }}</div></th>
+                    <td>
+                      <div class="size-inputs">
+                        {% for size in sizes %}
+                          {% assign variant = product.variants | where: "option1", size | where: "option2", side | first %}
+                          <div class="size-input-group inpuuuts">
+                            <span class="size-label">{{ size }}</span>
+                            <button type="button" class="quantity-button minus">-</button>
+                            <input
+                              type="number"
+                              id="Quantity-{{ variant.id }}"
+                              name="items[{{ variant.id }}][quantity]"
+                              data-variant-id="{{ variant.id }}"
+                              value="0"
+                              min="0"
+                              class="product-form__quantity"
+                              {% unless variant.available %}disabled{% endunless %}
+                            >
+                            <button type="button" class="quantity-button plus">+</button>
+                          </div>
+                        {% endfor %}
+                      </div>
+                    </td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          {%- elsif sizes.size > 0 -%}
+            <div class="size-only-variants">
+              <h3>Size <a href="#size-chart" style="font-size:.8em; color:#1c0038;">(Details)</a></h3>
+              <div class="size-inputs">
+                {% for size in sizes %}
+                  {% assign variant = product.variants | where: "option1", size | first %}
+                  <div class="size-input-group inputs__0">
+                    <span class="size-label">{{ size }}</span>
+                    <button type="button" class="quantity-button minus">-</button>
+                    <input
+                      type="number"
+                      id="Quantity-{{ variant.id }}"
+                      name="items[{{ variant.id }}][quantity]"
+                      data-variant-id="{{ variant.id }}"
+                      value="0"
+                      min="0"
+                      class="product-form__quantity"
+                      {% unless variant.available %}disabled{% endunless %}
+                    >
+                    <button type="button" class="quantity-button plus">+</button>
+                  </div>
+                {% endfor %}
+              </div>
             </div>
-          </div>
-          
+          {%- elsif sides.size > 0 -%}
+            <div class="size-only-variants">
+              <h3>Side</h3>
+              <div class="size-inputs inputs__1">
+                {% for side in sides %}
+                  {% assign variant = product.variants | where: "option1", side | first %}
+                  <div class="size-input-group">
+                    <span class="size-label">{{ side }}</span>
+                    <button type="button" class="quantity-button minus">-</button>
+                    <input
+                      type="number"
+                      id="Quantity-{{ variant.id }}"
+                      name="items[{{ variant.id }}][quantity]"
+                      data-variant-id="{{ variant.id }}"
+                      value="0"
+                      min="0"
+                      class="product-form__quantity"
+                      {% unless variant.available %}disabled{% endunless %}
+                    >
+                    <button type="button" class="quantity-button plus">+</button>
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+          {%- else -%}
+            {% assign variant = product.selected_or_first_available_variant %}
+            <div class="size-inputs inputs__2" style="margin-bottom: 1.5rem;">
+              <div class="size-input-group" style="max-width:120px;">
+                <span class="size-label">Qty.</span>
+                <button type="button" class="quantity-button minus">-</button>
+                <input
+                  type="number"
+                  id="Quantity-{{ variant.id }}"
+                  name="items[{{ variant.id }}][quantity]"
+                  data-variant-id="{{ variant.id }}"
+                  value="0"
+                  min="0"
+                  class="product-form__quantity"
+                  {% unless variant.available %}disabled{% endunless %}
+                >
+                <button type="button" class="quantity-button plus">+</button>
+              </div>
+            </div>
+          {%- endif -%}
+        </div>
+
+        <h3 class="subtitle">Order Summary</h3>
+        {%- if sides.size > 0 or sizes.size > 0 -%}
+          {%- render 'variation-order-summary', product: product -%}
+        {%- else -%}
           {%- render 'variation-order-summary-novariants', product: product -%}
         {%- endif -%}
-        
-        
 
         <div class="product-form__buttons">
           <button
@@ -130,7 +177,6 @@
             class="product-form__submit button button--full-width {% if show_dynamic_checkout %}button--secondary{% else %}button--primary{% endif %}"
             {% if product.available == false %}disabled{% endif %}
           >
-            
             <span class='add-cart-lang'>
               {%- if product.available -%}
                 {{ 'products.product.add_to_cart' | t }}
@@ -221,6 +267,7 @@
   padding: 0.5rem;
   font-weight: bold;
 }
+
 .variant-table tbody th .th-label{
   text-align: center;
   padding: 0.5rem;
@@ -269,8 +316,8 @@
   -webkit-appearance: none;
   margin: 0;
 }
-
-.quantity-button {
+ 
+.quantity-button { 
   background: none;
   border: none;
   font-size: 1.2rem;
@@ -280,5 +327,15 @@
 
 .quantity-button:hover {
   color: #555;
+}
+
+.size-only-variants {
+  margin-bottom: 1.5rem;
+  font-weight: bold;
+  color: #1C0038;
+}
+
+.size-only-variants .size-inputs {
+  max-width: 600px;
 }
 </style>

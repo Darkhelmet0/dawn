@@ -56,7 +56,7 @@
           "type": "slide_image",
           "settings": {
             "image": "shopify:\/\/shop_images\/MBD_Hero_Banner_About_Us_1_1.png",
-            "heading": "SUPERIOR SUPPORT AND <br>FLEX FLEXIBILITY FOR LESS",
+            "heading": "SUPERIOR SUPPORT AND<br>  FLEXIBILITY FOR LESS",
             "subheading": "",
             "link_url": "",
             "link_title": "Learn More"
@@ -90,6 +90,7 @@
       ],
       "settings": {
         "enable_carousel": true,
+        "enable_overlay": false,
         "heading": "BRACE YOURSELF. WE JUST LEVELED THE WHOLESALE PLAYING FIELD.",
         "subheading": "",
         "video_url": "https:\/\/ogkmediaserver.nyc3.cdn.digitaloceanspaces.com\/MBD\/MBDLoopCC1.mp4",

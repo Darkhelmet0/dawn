@@ -101,7 +101,7 @@
         "search-button-text": "Search Catalog",
         "description": "<p>Search for the products you need:<\/p>",
         "subtitle": "Popular Searches",
-        "search_type": "product",
+        "search_type": "",
         "placeholder_text": "Brace, Body Part, HCPCS Code..."
       }
     },

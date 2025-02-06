@@ -3,6 +3,7 @@
     "logo": "shopify:\/\/shop_images\/mbdlogopurp_4.svg",
     "alt_logo": "shopify:\/\/shop_images\/mbd_logo_white_2.svg",
     "logo_width": 220,
+    "favicon": "shopify:\/\/shop_images\/mbd-purp-logo.svg",
     "type_header_font": "assistant_n4",
     "heading_scale": 100,
     "type_body_font": "assistant_n4",

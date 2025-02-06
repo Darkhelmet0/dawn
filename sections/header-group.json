@@ -8,23 +8,22 @@
         "announcement_wBU3EY": {
           "type": "announcement",
           "settings": {
-            "text": "Welcome to our store",
+            "text": "More Products Coming soon!",
             "link": ""
           }
         },
-        "announcement-bar-0": {
+        "announcement_tapgtR": {
           "type": "announcement",
           "settings": {
-            "text": "Free Shipping on orders $500+ with code FREESHIP",
+            "text": "Free Shipping on orders over $50",
             "link": ""
           }
         }
       },
       "block_order": [
         "announcement_wBU3EY",
-        "announcement-bar-0"
+        "announcement_tapgtR"
       ],
-      "disabled": true,
       "settings": {
         "color_scheme": "scheme-3",
         "show_line_separator": true,

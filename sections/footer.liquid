@@ -211,7 +211,7 @@
     <div class="footer__content-bottom-wrapper page-width{% if section.settings.enable_country_selector == false and section.settings.enable_language_selector == false %} footer__content-bottom-wrapper--center{% endif %}">
       <div class="footer__copyright caption">
         <small class="copyright__content">&copy; {{ 'now' | date: '%Y' }}, {{ shop.name | link_to: routes.root_url -}}</small>
-        <small class="copyright__content">{{ powered_by_link }}</small>
+        
         {%- if section.settings.show_policy -%}
           <ul class="policies list-unstyled">
             {%- for policy in shop.policies -%}
@@ -229,6 +229,152 @@
     </div>
   </div>
 </footer>
+<script>
+// Create unique CSS with specific selectors
+const style = document.createElement('style');
+style.textContent = `
+  .homepage-welcome-modal__overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+  }
+
+  .homepage-welcome-modal__container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 90%;
+    z-index: 1001;
+  }
+
+  .homepage-welcome-modal__header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+  }
+
+  .homepage-welcome-modal__title {
+    margin: 0;
+    font-weight: bold;
+    display:flex;
+    justify-content: center;
+  }
+
+  .homepage-welcome-modal__close-button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0;
+    color: #666;
+    position: absolute;
+    top: 15px;
+    right:15px;
+  }
+
+  .homepage-welcome-modal__close-button:hover {
+    color: #333;
+  }
+
+  .homepage-welcome-modal__content {
+    margin-bottom: 20px;
+  }
+`;
+document.head.appendChild(style);
+
+// Create modal HTML with unique IDs and classes
+const modalHTML = `
+  <div class="homepage-welcome-modal__overlay" id="homepage-welcome-modal__overlay">
+    <div class="homepage-welcome-modal__container">
+    
+      <div class="homepage-welcome-modal__header" style="text-align:center;">
+        <h2 class="homepage-welcome-modal__title" style="text-align:center;"><svg style="margin-left:auto;margin-right:auto;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 184 52" height="52" width="184">
+<g clip-path="url(#clip0_447_3936)">
+<path fill="#00003c" d="M178.297 51.9674H176.69C174.179 51.9674 172.499 49.9251 172.94 47.4161L173.217 45.8423C173.66 43.3315 176.06 41.291 178.57 41.291H180.178C182.689 41.291 184.371 43.3333 183.928 45.8423L183.651 47.4161C183.208 49.9269 180.806 51.9674 178.297 51.9674ZM178.305 42.8087C176.633 42.8087 175.033 44.1691 174.738 45.8405L174.461 47.4143C174.166 49.0858 175.286 50.4461 176.959 50.4461H178.567C180.238 50.4461 181.839 49.0858 182.133 47.4143L182.41 45.8405C182.705 44.1691 181.584 42.8087 179.912 42.8087H178.305Z"/>
+<path fill="#00003c" d="M178.554 49.4202H177.332C176.118 49.4202 175.306 48.4362 175.521 47.2206L175.735 46.0122C175.948 44.7984 177.107 43.8125 178.321 43.8125H179.544C180.627 43.8125 181.392 44.6012 181.388 45.6341C181.388 45.8313 181.213 46.0176 181.01 46.0267L180.242 46.061C180.09 46.0683 179.972 45.9688 179.96 45.8222C179.927 45.455 179.661 45.2108 179.298 45.2108H178.075C177.632 45.2108 177.209 45.5708 177.131 46.014L176.917 47.2206C176.84 47.6638 177.136 48.0237 177.579 48.0237H178.802C179.166 48.0237 179.515 47.7813 179.672 47.4503C179.737 47.3128 179.878 47.2187 180.021 47.2187H180.784C180.99 47.2187 181.112 47.4087 181.039 47.6113C180.672 48.637 179.636 49.4184 178.558 49.4184L178.554 49.4202Z"/>
+<path fill="#00003c" d="M54.2785 15.0902L32.1138 33.9358C31.5405 34.4242 30.7501 34.4242 30.3486 33.9358L14.8288 15.0902C14.2501 14.3883 13.3675 13.9922 12.3727 13.9922H9.84971C7.83491 13.9922 5.91235 15.6257 5.55605 17.6426L4.80728 21.8864C4.63184 22.8795 4.85792 23.8329 5.43668 24.5365L25.865 49.3426C27.0696 50.8061 29.4425 50.8061 31.1625 49.3426L45.3855 37.2498C46.3115 36.4629 47.5576 37.0201 47.3623 38.1326L45.579 48.2446C45.2137 50.314 46.5955 51.9909 48.6645 51.9909H53.6907C55.7597 51.9909 57.7329 50.314 58.0965 48.2446L63.4735 17.7421C63.8388 15.6727 62.4571 13.9958 60.388 13.9958H57.118C56.1251 13.9958 55.1014 14.3902 54.2749 15.0938L54.2785 15.0902Z"/>
+<path fill="#00003c" d="M102.458 51.9676H65.7976C63.7286 51.9676 62.3468 50.2907 62.7121 48.2212L70.5525 3.74828C70.9178 1.67885 72.8911 0.00195312 74.9583 0.00195312H79.6065C81.6755 0.00195312 83.0573 1.67885 82.692 3.74828L81.6375 9.73409C81.3952 11.1053 82.3049 12.2214 83.6759 12.2322L102.326 12.3752C119.074 12.5253 127.244 33.7678 106.106 50.6308C105.028 51.49 103.723 51.9694 102.458 51.9694V51.9676ZM77.5808 39.8241H99.9064C100.563 39.8241 101.241 39.56 101.795 39.1042C109.651 32.6173 106.49 24.5711 100.084 24.515L81.5724 24.3721C80.187 24.3612 78.8595 25.4828 78.6153 26.8702L76.5517 38.5759C76.4305 39.2652 76.8899 39.8241 77.5808 39.8241Z"/>
+<path fill="#00003c" d="M158.987 12.3732L141.615 12.2881C139.54 12.2773 137.555 13.9596 137.189 16.0363L136.166 21.8557C135.923 23.2359 134.607 24.3538 133.228 24.3538H127.327C125.258 24.3538 123.285 26.0307 122.921 28.1001L119.374 48.2193C119.009 50.2887 120.391 51.9656 122.46 51.9656H159.121C160.383 51.9656 161.691 51.4862 162.769 50.627C183.906 33.764 175.736 12.5215 158.989 12.3713L158.987 12.3732ZM156.744 24.5148C163.148 24.5727 166.312 32.6171 158.455 39.104C157.902 39.5598 157.223 39.8239 156.567 39.8239H134.243C133.554 39.8239 133.093 39.265 133.214 38.574L135.283 26.8628C135.527 25.479 136.846 24.3611 138.227 24.3719C143.8 24.4153 156.746 24.5148 156.746 24.5148H156.744Z"/>
+<path fill="#00003c" d="M7.69209 35.7194L14.1109 43.4635C16.7171 46.6074 13.5394 52.0017 9.08292 52.0017H2.62072C0.897102 52.0017 -0.254989 50.6034 0.0488589 48.8794L1.97866 37.9335C2.46879 35.1568 6.06795 33.7603 7.69209 35.7194Z"/>
+</g>
+<defs>
+<clipPath id="clip0_447_3936">
+<rect fill="white" height="52" width="184"/>
+</clipPath>
+</defs>
+</svg></h2>
+        <button class="homepage-welcome-modal__close-button" id="homepage-welcome-modal__close-button">&times;</button>
+      </div>
+      <div class="homepage-welcome-modal__content" style="text-align:center;">
+        {{ section.settings.popup_content }}
+      </div>
+    </div>
+  </div>
+`;
+
+// Function to show modal on homepage with unique storage key
+function initializeHomepageWelcomeModal() {
+  // Only show on homepage ('/')
+  if (window.location.pathname !== '/') return;
+
+  // Check if user has already dismissed the modal
+  //const STORAGE_KEY = 'homepage_welcome_modal_dismissed_v1';
+  //if (localStorage.getItem(STORAGE_KEY)) return;
+
+  // Add modal to the page
+  document.body.insertAdjacentHTML('beforeend', modalHTML);
+
+  const modalOverlay = document.getElementById('homepage-welcome-modal__overlay');
+  const closeButton = document.getElementById('homepage-welcome-modal__close-button');
+
+  // Show the modal
+  modalOverlay.style.display = 'block';
+
+  // Close modal function
+  function closeHomepageWelcomeModal() {
+    modalOverlay.style.display = 'none';
+    //localStorage.setItem(STORAGE_KEY, 'true');
+    
+    // Optional: Remove modal from DOM after closing
+    setTimeout(() => {
+      modalOverlay.remove();
+    }, 300);
+  }
+
+  // Event listeners for closing
+  closeButton.addEventListener('click', closeHomepageWelcomeModal);
+  
+  // Close on overlay click
+  modalOverlay.addEventListener('click', (e) => {
+    if (e.target === modalOverlay) {
+      closeHomepageWelcomeModal();
+    }
+  });
+
+  // Close on escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeHomepageWelcomeModal();
+    }
+  });
+}
+
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', initializeHomepageWelcomeModal);
+  
+</script>
 <script>
   (function() {
     console.log('Debug: Optimized script content modifier v10 started');
@@ -539,7 +685,17 @@
       "unit": "px",
       "label": "t:sections.all.padding.padding_bottom",
       "default": 36
-    }
+    },
+{
+  "type": "header",
+  "content": "Popup Settings"
+},
+{
+  "type": "richtext",
+  "id": "popup_content",
+  "label": "Popup Content",
+  "default": "<p>Use code:<b>GRANDOPENING30</b> <br>valid for <b>30%</b> off non-bulk orders</p>"
+}
   ],
   "default": {
     "blocks": [
